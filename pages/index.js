@@ -1,15 +1,14 @@
-import {useState} from 'react';
+import 'bulma/css/bulma.min.css';
+import Navbar from '../components/navbar';
 
 export default () => {
-  const [counter, updateCounter] = useState(0);
-
-  const increment = () => updateCounter(counter + 1);
-
   return (
-    <div>
-      <h1>Welcome to bxjs!</h1>
-      <div>{counter}</div>
-      <button onClick={increment}>Up the number!</button>
+    <div class="container">
+      <Navbar />
+      <h1 class="title">Hello World</h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+      </p>
     </div>
   );
 };
