@@ -1,0 +1,27 @@
+{
+  "name": "BxJS-Website",
+  "version": "1.0.0",
+  "description": "BxJS Website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuildingXwithJS/BxJS-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuildingXwithJS/BxJS-Website/issues"
+  },
+  "homepage": "https://github.com/BuildingXwithJS/BxJS-Website#readme",
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0"
+  }
+}
