@@ -17,17 +17,19 @@
 
 2. BxJS Weekly news
 
-- [ ] current week page
+- [x] current week page
 
   - just render markdown as page
 
-- [ ] archive
+- [x] archive
 
   - parse episodes from github
   - render using headers as sections
 
-- [ ] search (see below)
 - [x] dedupe service / CI pipeline (see below)
+
+- [ ] handle github API limit (cache responses on our server)
+- [ ] search (see below)
 
 3. Videos
 

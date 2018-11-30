@@ -7,6 +7,8 @@ const episodesList = `${baseUrl}/contents/links`;
 export const getEpisodes = async () => {
   const res = await fetch(episodesList).then(r => r.json());
 
+  console.log(res);
+
   const episodes = res
     .map(item => {
       const [, episodeName] = /\d+-\d+-(.+?)\./.exec(item.name);
