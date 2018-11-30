@@ -3,10 +3,10 @@ import Navbar from '../components/navbar';
 
 export default () => {
   return (
-    <div class="container">
+    <div className="container">
       <Navbar />
-      <h1 class="title">Hello World</h1>
-      <p class="subtitle">
+      <h1 className="title">Hello World</h1>
+      <p className="subtitle">
         My first website with <strong>Bulma</strong>!
       </p>
     </div>

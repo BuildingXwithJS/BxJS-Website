@@ -1,18 +1,26 @@
+import Link from 'next/link';
+
 export default () => (
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-      </a>
+  <nav className="navbar" role="navigation" aria-label="main navigation">
+    <div className="navbar-brand">
+      <Link href="/">
+        <a className="navbar-item">BxJS</a>
+      </Link>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">About BxJS</a>
+    <div id="navbarBasicExample" className="navbar-menu">
+      <div className="navbar-start">
+        <Link href="/">
+          <a className="navbar-item">About BxJS</a>
+        </Link>
 
-        <a class="navbar-item">BxJS Weekly</a>
+        <Link href="/weekly">
+          <a className="navbar-item">BxJS Weekly</a>
+        </Link>
 
-        <a class="navbar-item">BxJS Content</a>
+        <Link href="/content">
+          <a className="navbar-item">BxJS Content</a>
+        </Link>
       </div>
     </div>
   </nav>
