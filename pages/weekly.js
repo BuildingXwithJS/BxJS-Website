@@ -3,6 +3,7 @@ import snarkdown from 'snarkdown';
 import Episode from '../components/episode';
 import {getEpisodes} from '../components/github';
 import Navbar from '../components/navbar';
+import Search from '../components/search';
 
 export default class Weekly extends React.Component {
   static async getInitialProps({query}) {
@@ -21,6 +22,7 @@ export default class Weekly extends React.Component {
     return (
       <div className="container">
         <Navbar />
+        <Search />
         <h1 className="title">BxJS Weekly - {name}</h1>
         <div className="columns">
           <div className="column content is-four-fifths" dangerouslySetInnerHTML={{__html: contentHtml}} />
