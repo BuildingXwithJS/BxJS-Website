@@ -59,3 +59,6 @@ typings/
 
 # next.js build output
 .next
+
+# downloaded index files
+indexes/*.json
