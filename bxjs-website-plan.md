@@ -29,7 +29,10 @@
 - [x] dedupe service / CI pipeline (see below)
 
 - [x] handle github API limit (cache responses on our server)
-- [ ] search (see below)
+- [x] basic search (see below)
+- [ ] setup github webhook
+- [ ] use typeahead for search
+- [ ] dynamically load searchbar
 
 3. Videos
 
