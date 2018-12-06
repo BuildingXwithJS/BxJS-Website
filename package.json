@@ -24,6 +24,7 @@
     "bulma": "^0.7.2",
     "fastify": "^1.13.1",
     "isomorphic-unfetch": "^3.0.0",
+    "lru-cache": "^5.1.1",
     "next": "^7.0.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",

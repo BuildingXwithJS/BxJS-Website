@@ -1,13 +1,13 @@
 import fetch from 'isomorphic-unfetch';
+import getConfig from 'next/config';
 
-const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
+const {serverRuntimeConfig, publicRuntimeConfig} = getConfig();
 
-const episodesList = `${baseUrl}/contents/links`;
+const baseUrl = publicRuntimeConfig.baseUrl;
+const episodesList = `${baseUrl}/api/episodes`;
 
 export const getEpisodes = async () => {
   const res = await fetch(episodesList).then(r => r.json());
-
-  console.log(res);
 
   const episodes = res
     .map(item => {

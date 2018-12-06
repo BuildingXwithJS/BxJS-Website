@@ -28,7 +28,7 @@
 
 - [x] dedupe service / CI pipeline (see below)
 
-- [ ] handle github API limit (cache responses on our server)
+- [x] handle github API limit (cache responses on our server)
 - [ ] search (see below)
 
 3. Videos
