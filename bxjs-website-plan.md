@@ -32,7 +32,7 @@
 - [x] basic search (see below)
 - [x] use typeahead for search
 - [x] dynamically load searchbar
-- [ ] setup github webhook
+- [x] setup github webhook
 
 3. Videos
 
