@@ -1,7 +1,4 @@
 const withCSS = require('@zeit/next-css');
+const envConfig = require('./env.config');
 
-module.exports = withCSS({
-  publicRuntimeConfig: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-  },
-});
+module.exports = withCSS(envConfig);

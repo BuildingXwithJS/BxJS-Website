@@ -4,6 +4,7 @@ const fetch = require('isomorphic-unfetch');
 const elasticlunr = require('elasticlunr');
 const LRU = require('lru-cache');
 const snarkdown = require('snarkdown');
+const {serverRuntimeConfig} = require('../env.config');
 
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
 const episodesListUrl = `${baseUrl}/contents/links`;
@@ -27,10 +28,6 @@ const findInIndex = (url, index) => {
 module.exports = function(fastify, opts, next) {
   const episodesCache = new LRU({
     maxAge: 1000 * 60 * 60 * 24, // 1 day
-  });
-  const releasesCache = new LRU({
-    max: 1, // max cache 1 item
-    maxAge: 1000 * 60 * 60 * 24 * 3, // 3 day
   });
 
   // load search index
@@ -80,17 +77,15 @@ module.exports = function(fastify, opts, next) {
   });
 
   fastify.get('/update', async (req, reply) => {
-    const releasesFetched = releasesCache.get('release');
-    if (releasesFetched) {
-      reply.send('Cached');
+    // validate hook
+    if (req.headers['x-hub-signature'] !== serverRuntimeConfig.webhookSecret) {
+      console.error('Webhook called with wrong secret!');
+      reply.code(401).send({error: 'Wrong secret'});
       return;
     }
 
     // get latest release
     const [latestRelease] = await fetch(releasesUrl).then(r => r.json());
-    // add to cache to make sure we do not check for
-    // release more often than every 3 days
-    releasesCache.set('release', latestRelease);
 
     // get download url
     const {assets} = latestRelease;
