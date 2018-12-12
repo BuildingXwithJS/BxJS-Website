@@ -30,9 +30,9 @@
 
 - [x] handle github API limit (cache responses on our server)
 - [x] basic search (see below)
+- [x] use typeahead for search
+- [x] dynamically load searchbar
 - [ ] setup github webhook
-- [ ] use typeahead for search
-- [ ] dynamically load searchbar
 
 3. Videos
 
