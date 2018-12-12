@@ -3,6 +3,7 @@ const path = require('path');
 const fetch = require('isomorphic-unfetch');
 const elasticlunr = require('elasticlunr');
 const LRU = require('lru-cache');
+const snarkdown = require('snarkdown');
 
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
 const episodesListUrl = `${baseUrl}/contents/links`;
@@ -52,15 +53,17 @@ module.exports = function(fastify, opts, next) {
 
   fastify.get('/episode', async (req, reply) => {
     const episodeUrl = req.query.url;
-    const episodeText = episodesCache.get(episodeUrl);
-    if (episodeText) {
-      reply.send(episodeText);
+    const episodeData = episodesCache.get(episodeUrl);
+    if (episodeData) {
+      reply.send(episodeData);
       return;
     }
 
-    const res = await fetch(episodeUrl).then(r => r.text());
-    episodesCache.set(episodeUrl, res);
-    reply.send(res);
+    const markdown = await fetch(episodeUrl).then(r => r.text());
+    const html = snarkdown(markdown);
+    const result = {markdown, html};
+    episodesCache.set(episodeUrl, result);
+    reply.send(result);
   });
 
   fastify.get('/search', (req, reply) => {

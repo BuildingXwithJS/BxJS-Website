@@ -2,7 +2,6 @@ import 'bulma/css/bulma.min.css';
 import getConfig from 'next/config';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import snarkdown from 'snarkdown';
 import Episode from '../components/episode';
 import {getEpisodes} from '../components/github';
 import Navbar from '../components/navbar';
@@ -22,9 +21,9 @@ export default class Weekly extends React.Component {
     const episodes = await getEpisodes();
     const currentEpisode = query.file ? episodes.find(ep => ep.filename === query.file) : episodes[0];
     const episodeUrl = `${episodesDataUrl}?url=${encodeURIComponent(currentEpisode.url)}`;
-    const episodeContent = await fetch(episodeUrl).then(r => r.text());
-    currentEpisode.contentMarkdown = episodeContent;
-    currentEpisode.contentHtml = snarkdown(episodeContent);
+    const {markdown, html} = await fetch(episodeUrl).then(r => r.json());
+    currentEpisode.contentMarkdown = markdown;
+    currentEpisode.contentHtml = html;
     return {episodes, currentEpisode};
   }
 
