@@ -3,7 +3,7 @@ import getConfig from 'next/config';
 import Link from 'next/link';
 import React, {useState} from 'react';
 
-const {serverRuntimeConfig, publicRuntimeConfig} = getConfig();
+const {publicRuntimeConfig} = getConfig();
 
 const baseUrl = publicRuntimeConfig.baseUrl;
 const searchUrl = `${baseUrl}/api/search`;

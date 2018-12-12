@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import getConfig from 'next/config';
 
-const {serverRuntimeConfig, publicRuntimeConfig} = getConfig();
+const {publicRuntimeConfig} = getConfig();
 
 const baseUrl = publicRuntimeConfig.baseUrl;
 const episodesList = `${baseUrl}/api/episodes`;
