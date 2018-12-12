@@ -1,10 +1,16 @@
 import 'bulma/css/bulma.min.css';
+import getConfig from 'next/config';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import snarkdown from 'snarkdown';
 import Episode from '../components/episode';
 import {getEpisodes} from '../components/github';
 import Navbar from '../components/navbar';
+
+const {publicRuntimeConfig} = getConfig();
+
+const baseUrl = publicRuntimeConfig.baseUrl;
+const episodesDataUrl = `${baseUrl}/api/episode`;
 
 // create dynamically loaded search component
 const Search = dynamic(() => import('../components/search'), {
@@ -15,7 +21,8 @@ export default class Weekly extends React.Component {
   static async getInitialProps({query}) {
     const episodes = await getEpisodes();
     const currentEpisode = query.file ? episodes.find(ep => ep.filename === query.file) : episodes[0];
-    const episodeContent = await fetch(currentEpisode.url).then(r => r.text());
+    const episodeUrl = `${episodesDataUrl}?url=${encodeURIComponent(currentEpisode.url)}`;
+    const episodeContent = await fetch(episodeUrl).then(r => r.text());
     currentEpisode.contentMarkdown = episodeContent;
     currentEpisode.contentHtml = snarkdown(episodeContent);
     return {episodes, currentEpisode};

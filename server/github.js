@@ -25,7 +25,6 @@ const findInIndex = (url, index) => {
 
 module.exports = function(fastify, opts, next) {
   const episodesCache = new LRU({
-    max: 1, // max cache 1 item
     maxAge: 1000 * 60 * 60 * 24, // 1 day
   });
   const releasesCache = new LRU({
@@ -48,6 +47,19 @@ module.exports = function(fastify, opts, next) {
 
     const res = await fetch(episodesListUrl).then(r => r.json());
     episodesCache.set('episodes', res);
+    reply.send(res);
+  });
+
+  fastify.get('/episode', async (req, reply) => {
+    const episodeUrl = req.query.url;
+    const episodeText = episodesCache.get(episodeUrl);
+    if (episodeText) {
+      reply.send(episodeText);
+      return;
+    }
+
+    const res = await fetch(episodeUrl).then(r => r.text());
+    episodesCache.set(episodeUrl, res);
     reply.send(res);
   });
 
