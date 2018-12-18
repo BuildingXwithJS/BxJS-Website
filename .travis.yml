@@ -1,0 +1,18 @@
+language: node_js
+
+node_js: node
+
+before_install:
+  - npm install -g exoframe
+  - exoframe endpoint https://exoframe.codezen.net
+
+after_success:
+  - exoframe -u -t $EXO_TOKEN
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    secure: ITJ3RiLK1flT8DBpohQigCrBgkckz25JUFhiMihuTD9+6/vgzlHEgNhHm4nIympa3dGF85ThqA46lLtZJIAeBnn8zuVA314wGBtWOl32ut3SpcrtcnCHbX1LNhASX0njfNgBhuU5LK5zm4zTVrJ65cijO/4DzhO1PAVkhfAPGXE0Xtcc/SVGZ2WxGoswS0FZn+7UEtA3Fu3rxTSjuerGataaktaS1lf4rTL6rE+mycttujDp9e//r1R9BXXE1zRkFyBqeptsA4Aj44MvA7bWGp/74zTdVqHQ26jpKRL8B4O67kabrhaEqOjT8eildHveVhB+AyvJohFpm3dnmdP9DM5HS8PTSLR5cErnj42gzxA9/PUXcB7rgEXp6rp8Eoy/9rrms/UoFlECuynsVBilxFZBD34QOSVqRMsqiBTwh0xv8UM8VlQXgHVmywm1HLEXbwKd4lQLKihWQtCPw1hVlZlpO/iG8qJc1UT4L/yK8tfa/uTNsYQ7OJHXTd5mu11PPNah+rJZd3WbNEt8i3mRrm+phUJS2bBT0hoX4ufxbrPpIrHSW17KZ1bnvTWHX3QZMOMw3stQ46uIw1D9D6D/cN2rAw+o0gLSd1ztIP+Eo+NfMCT6x52Yn9qMLwBV9hS8j8JkSIx7DZtkdxwd807k9WK09vjDbN31lga0f9UkRBo=
