@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/BuildingXwithJS/BxJS-Website#readme",
   "dependencies": {
+    "@octokit/webhooks": "^5.1.2",
     "@zeit/next-css": "^1.0.1",
     "bulma": "^0.7.2",
     "elasticlunr": "^0.9.5",

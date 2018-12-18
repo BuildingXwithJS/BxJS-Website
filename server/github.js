@@ -4,6 +4,7 @@ const fetch = require('isomorphic-unfetch');
 const elasticlunr = require('elasticlunr');
 const LRU = require('lru-cache');
 const snarkdown = require('snarkdown');
+const verify = require('@octokit/webhooks/verify');
 const {serverRuntimeConfig} = require('../env.config');
 
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
@@ -76,9 +77,12 @@ module.exports = function(fastify, opts, next) {
     reply.send(results);
   });
 
-  fastify.get('/update', async (req, reply) => {
+  fastify.post('/update', async (req, reply) => {
     // validate hook
-    if (req.headers['x-hub-signature'] !== serverRuntimeConfig.webhookSecret) {
+    const signature = req.headers['x-hub-signature'];
+    const secret = serverRuntimeConfig.webhookSecret;
+    const matchesSignature = verify(secret, req.body, signature);
+    if (!matchesSignature) {
       console.error('Webhook called with wrong secret!');
       reply.code(401).send({error: 'Wrong secret'});
       return;
