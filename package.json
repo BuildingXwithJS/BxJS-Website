@@ -30,6 +30,7 @@
     "next": "^7.0.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
+    "react-icons": "^3.2.2",
     "rxjs": "^6.3.3",
     "snarkdown": "^1.2.2"
   }
