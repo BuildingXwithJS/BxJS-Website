@@ -1,0 +1,11 @@
+{
+  "name": "BxJS-Website",
+  "restart": "on-failure:2",
+  "domain": "bxjs.codezen.net",
+  "project": "bxjs-website",
+  "env": {
+    "BASE_URL": "https://bxjs.codezen.net",
+    "WEBHOOK_SECRET": "@bxjs-website-webhook",
+    "PORT": 80
+  }
+}
