@@ -45,7 +45,7 @@ export default () => {
       return;
     }
 
-    typeaheadSubject.next(query);
+    typeaheadSubject.next(newQuery);
   };
   const handleKeyPress = e => {
     if (e.key === 'Escape') {

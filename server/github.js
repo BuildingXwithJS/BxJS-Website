@@ -1,41 +1,18 @@
-const fs = require('fs');
-const path = require('path');
 const fetch = require('isomorphic-unfetch');
-const elasticlunr = require('elasticlunr');
 const LRU = require('lru-cache');
 const snarkdown = require('snarkdown');
 const verify = require('@octokit/webhooks/verify');
 const {serverRuntimeConfig} = require('../env.config');
+const processNewData = require('./dataprocessor');
+const {Article} = require('./db');
 
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
 const episodesListUrl = `${baseUrl}/contents/links`;
-const releasesUrl = `${baseUrl}/releases`;
-
-const indexPath = path.join(__dirname, '..', 'indexes', 'index.json');
-
-const findInIndex = (url, index) => {
-  const results = index.search(url, {
-    fields: {
-      title: {boost: 1},
-      urls: {boost: 1},
-    },
-  });
-  return results.slice(0, 10).map(({ref, score}) => ({
-    ...index.documentStore.getDoc(ref),
-    score,
-  }));
-};
 
 module.exports = function(fastify, opts, next) {
   const episodesCache = new LRU({
     maxAge: 1000 * 60 * 60 * 24, // 1 day
   });
-
-  // load search index
-  let searchIndex = null;
-  if (fs.existsSync(indexPath)) {
-    searchIndex = elasticlunr.Index.load(JSON.parse(fs.readFileSync(indexPath).toString()));
-  }
 
   fastify.get('/episodes', async (req, reply) => {
     const episodes = episodesCache.get('episodes');
@@ -64,15 +41,19 @@ module.exports = function(fastify, opts, next) {
     reply.send(result);
   });
 
-  fastify.get('/search', (req, reply) => {
-    if (!searchIndex) {
-      reply.send({error: 'No index found'});
-      return;
-    }
-
+  fastify.get('/search', async (req, reply) => {
     const query = req.query.q;
 
-    const results = findInIndex(query, searchIndex);
+    const [titleResults, urlResults] = await Promise.all([
+      Article.find({$text: {$search: query}}, {score: {$meta: 'textScore'}})
+        .sort({
+          score: {$meta: 'textScore'},
+        })
+        .limit(10),
+      Article.find({urls: new RegExp(query)}).limit(5),
+    ]);
+    const titleUrls = titleResults.map(res => res.urls);
+    const results = titleResults.concat(urlResults.filter(r => !titleUrls.includes(r.urls))).map(r => r.toObject());
 
     reply.send(results);
   });
@@ -88,21 +69,10 @@ module.exports = function(fastify, opts, next) {
       return;
     }
 
-    // get latest release
-    const [latestRelease] = await fetch(releasesUrl).then(r => r.json());
+    // trigger execution in the background
+    processNewData();
 
-    // get download url
-    const {assets} = latestRelease;
-    const [mainAsset] = assets;
-    const {browser_download_url} = mainAsset;
-
-    // write index to file
-    const fileText = await fetch(browser_download_url).then(r => r.text());
-    fs.writeFileSync(indexPath, fileText);
-
-    // update in-memory index
-    searchIndex = elasticlunr.Index.load(JSON.parse(fileText));
-
+    // tell github we're good
     reply.send('Done');
   });
 

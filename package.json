@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "mongo:start": "docker run -d -p 27017:27017 --name bxjs-mongo mongo:latest",
+    "mongo:volume": "docker run -d -p 27017:27017 -v bxjs-data:/data/db --name bxjs-mongo mongo:latest",
+    "mongo:clean": "docker stop bxjs-mongo && docker rm bxjs-mongo"
   },
   "repository": {
     "type": "git",
@@ -23,10 +26,10 @@
     "@octokit/webhooks": "^5.1.2",
     "@zeit/next-css": "^1.0.1",
     "bulma": "^0.7.2",
-    "elasticlunr": "^0.9.5",
     "fastify": "^1.13.1",
     "isomorphic-unfetch": "^3.0.0",
     "lru-cache": "^5.1.1",
+    "mongoose": "^5.4.4",
     "next": "^7.0.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",

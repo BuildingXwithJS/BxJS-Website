@@ -6,6 +6,7 @@
   "env": {
     "BASE_URL": "https://bxjs.codezen.net",
     "WEBHOOK_SECRET": "@bxjs-website-webhook",
+    "MONGO_URL": "mongodb://pm-mongo/bxjs",
     "PORT": 80
   }
 }
