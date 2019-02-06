@@ -1,5 +1,6 @@
 const fetch = require('isomorphic-unfetch');
 const {Article} = require('./db');
+const scheduleCrawler = require('./crawler');
 
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
 const releasesUrl = `${baseUrl}/releases`;
@@ -46,9 +47,9 @@ const process = async () => {
     })
   );
 
-  console.log('done writing articles to db');
-  // TODO: schedule a worker to crawl new articles
-  // and get tags, fulltext, etc
+  // schedule a crawler to get full html, text
+  // and metadata, etc.
+  scheduleCrawler();
 };
 
 module.exports = process;
