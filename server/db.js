@@ -21,6 +21,11 @@ const ArticleSchema = new mongoose.Schema(
     urlsSet: [String],
     filename: String,
     episodeName: String,
+    // extracted properies
+    fullHtml: String,
+    metadata: Object,
+    text: String,
+    keywords: [String],
   },
   {strict: false}
 );
