@@ -1,10 +1,10 @@
 {
   "name": "BxJS-Website",
   "restart": "on-failure:2",
-  "domain": "bxjs.codezen.net",
+  "domain": "bxjs.dev",
   "project": "bxjs-website",
   "env": {
-    "BASE_URL": "https://bxjs.codezen.net",
+    "BASE_URL": "https://bxjs.dev",
     "WEBHOOK_SECRET": "@bxjs-website-webhook",
     "MONGO_URL": "mongodb://pm-mongo/bxjs",
     "PORT": 80
