@@ -37,21 +37,25 @@ export default () => {
       <div className="section content">
         <h2>BxJS</h2>
 
-        <p>BxJS - or "Building X with JS" - is a TODO: write a proper description of BxJS stuff</p>
+        <p>
+          BxJS - or "Building X with JS" - is a web video series, live podcast as well as a community of like-minded
+          people. <br />
+          The main goal of BxJS is to teach everyone to build awesome things with javascript.
+        </p>
 
         <h2>
           <FaTwitch style={verticalIcon} /> Streaming schedule
         </h2>
         <div className="columns">
           <div className="column has-text-centered">
-            <p className="schedule-title">Software development stream</p>
+            <p className="schedule-title">Software development streams</p>
             <p className="schedule-text">
               Every <strong>Wed @ 19:00</strong>{' '}
               <a href="https://www.worldtimebuddy.com/?qm=1&lid=2950159&h=2950159&sln=19-20">Berlin time</a>
             </p>
           </div>
           <div className="column has-text-centered">
-            <p className="schedule-title">BxJS Weekly podcast stream</p>
+            <p className="schedule-title">BxJS Weekly podcast streams</p>
             <p className="schedule-text">
               Every <strong>Sat @ 20:00</strong>{' '}
               <a href="https://www.worldtimebuddy.com/?qm=1&lid=2950159&h=2950159&sln=20-21">Berlin time</a>

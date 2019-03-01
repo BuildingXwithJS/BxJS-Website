@@ -10,10 +10,6 @@ export default () => (
 
     <div id="navbarBasicExample" className="navbar-menu">
       <div className="navbar-start">
-        <Link href="/">
-          <a className="navbar-item">About BxJS</a>
-        </Link>
-
         <Link href="/weekly">
           <a className="navbar-item">BxJS Weekly</a>
         </Link>
