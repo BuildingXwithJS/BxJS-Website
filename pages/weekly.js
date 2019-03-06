@@ -1,4 +1,5 @@
 import 'bulma/css/bulma.min.css';
+import fetch from 'isomorphic-unfetch';
 import getConfig from 'next/config';
 import dynamic from 'next/dynamic';
 import React from 'react';

@@ -1,11 +1,13 @@
 const fastify = require('fastify')({logger: {level: 'error'}});
 const Next = require('next');
 const githubRoutes = require('./github');
+const exploreRoutes = require('./explore');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
 fastify.register(githubRoutes, {prefix: '/api'});
+fastify.register(exploreRoutes, {prefix: '/api'});
 
 fastify.register(async (fastify, opts, next) => {
   const app = Next({dev});
@@ -19,6 +21,11 @@ fastify.register(async (fastify, opts, next) => {
 
   fastify.get('/weekly/:file', async (req, reply) => {
     await app.render(req.req, reply.res, '/weekly', {...req.query, file: req.params.file});
+    reply.sent = true;
+  });
+
+  fastify.get('/explore/keyword/:word', async (req, reply) => {
+    await app.render(req.req, reply.res, '/explore', {...req.query, word: req.params.word});
     reply.sent = true;
   });
 

@@ -13,6 +13,9 @@ export default () => (
         <Link href="/weekly">
           <a className="navbar-item">BxJS Weekly</a>
         </Link>
+        <Link href="/explore">
+          <a className="navbar-item">Explore BxJS content</a>
+        </Link>
       </div>
     </div>
   </nav>
