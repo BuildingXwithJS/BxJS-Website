@@ -16,14 +16,11 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 import Navbar from '../components/navbar';
-import Head from '../components/head'
 
 const verticalIcon = {verticalAlign: 'middle'};
 
 export default () => {
   return (
-    <div>
-      <Head />
       <div className="container">
         <Navbar />
 
@@ -104,6 +101,5 @@ export default () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
