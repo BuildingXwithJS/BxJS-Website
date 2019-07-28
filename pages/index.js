@@ -25,16 +25,6 @@ export default () => {
     <div>
       <Head />
       <div className="container">
-        <style jsx>{`
-          .schedule-title {
-            font-size: 1.6em;
-            margin-bottom: 5px !important;
-          }
-          .schedule-text {
-            font-size: 1.25em;
-          }
-        `}</style>
-
         <Navbar />
 
         <div className="section content">
@@ -51,15 +41,15 @@ export default () => {
           </h2>
           <div className="columns">
             <div className="column has-text-centered">
-              <p className="schedule-title">Software development streams</p>
-              <p className="schedule-text">
+              <p className="is-size-4 is-marginless">Software development streams</p>
+              <p className="is-size-5">
                 Every <strong>Wed @ 19:00</strong>{' '}
                 <a href="https://www.worldtimebuddy.com/?qm=1&lid=2950159&h=2950159&sln=19-20">Berlin time</a>
               </p>
             </div>
             <div className="column has-text-centered">
-              <p className="schedule-title">BxJS Weekly podcast streams</p>
-              <p className="schedule-text">
+              <p className="is-size-4 is-marginless">BxJS Weekly podcast streams</p>
+              <p className="is-size-5">
                 Every <strong>Sat @ 20:00</strong>{' '}
                 <a href="https://www.worldtimebuddy.com/?qm=1&lid=2950159&h=2950159&sln=20-21">Berlin time</a>
               </p>
@@ -70,45 +60,45 @@ export default () => {
             <FaLink style={verticalIcon} /> Related resources
           </h2>
           <div className="columns">
-            <div className="column">
+            <div className="column has-text-centered">
               <FaYoutube style={verticalIcon} /> <a href="https://www.youtube.com/c/TimErmilov">YouTube</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaTwitch style={verticalIcon} /> <a href="https://www.twitch.tv/yamalight">Twitch</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaPodcast style={verticalIcon} /> <a href="https://castbox.fm/channel/id1378315">Castbox</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaItunes style={verticalIcon} />{' '}
               <a href="https://itunes.apple.com/us/podcast/bxjs-weekly/id1441956525">iTunes</a>
             </div>
           </div>
           <div className="columns">
-            <div className="column">
+            <div className="column has-text-centered">
               <FaDiscord style={verticalIcon} /> <a href="https://discord.gg/hnKCXqQ">Discord</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaGithub style={verticalIcon} /> <a href="https://github.com/BuildingXwithJS">Github</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaReddit style={verticalIcon} /> <a href="https://www.reddit.com/r/BuildingWithJS">Reddit</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaDev style={verticalIcon} /> <a href="https://dev.to/yamalight">Dev.to</a>
             </div>
           </div>
           <div className="columns">
-            <div className="column">
+            <div className="column has-text-centered">
               <FaTwitter style={verticalIcon} /> <a href="https://twitter.com/yamalight">Twitter</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaFacebook style={verticalIcon} /> <a href="https://www.facebook.com/buildingproductswithjs/">Facebook</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaAt style={verticalIcon} /> <a href="mailto:yamalight@gmail.com">Email</a>
             </div>
-            <div className="column">
+            <div className="column has-text-centered">
               <FaDonate style={verticalIcon} /> <a href="https://codezen.net/support.html">Support me</a>
             </div>
           </div>
