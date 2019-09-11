@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: deploy with exoframe
-        run: npx exoframe -u -e https://exoframe.codezen.net -t $EXO_TOKEN
-        env:
-          EXO_TOKEN: ${{ secrets.EXO_TOKEN }}
+        uses: ./actions/deploy
+        with:
+          endpoint: https://exoframe.codezen.net
+          token: ${{ secrets.EXO_TOKEN }}

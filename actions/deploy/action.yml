@@ -1,0 +1,12 @@
+name: 'Deploy with Exoframe'
+description: 'Deploy your service with Exoframe'
+inputs:
+  endpoint: # id of input
+    description: 'Exoframe server endpoint'
+    required: true
+  token:
+    description: 'Exoframe deployment token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
