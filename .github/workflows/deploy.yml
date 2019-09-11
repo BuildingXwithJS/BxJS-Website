@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: find npx
+        run: type npx
       - name: deploy with exoframe
         uses: ./actions/deploy
         with:
