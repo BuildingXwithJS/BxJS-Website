@@ -1,12 +1,11 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
 const {spawn} = require('child_process');
 
 try {
   const endpoint = core.getInput('endpoint');
   const token = core.getInput('token');
   const child = spawn('npx', ['exoframe', '-u', `-e ${endpoint}`, `-t $TOKEN`], {
-    env: {TOKEN: token},
+    env: {...process.env, TOKEN: token},
   });
   let stdout = '';
   let stderr = '';
