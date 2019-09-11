@@ -14,12 +14,12 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: deploy with exoframe
-      run: exoframe -u -e https://exoframe.codezen.net -t $EXO_TOKEN
-      env:
-        EXO_TOKEN: ${{ secrets.EXO_TOKEN }}
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: deploy with exoframe
+        run: npx exoframe -u -e https://exoframe.codezen.net -t $EXO_TOKEN
+        env:
+          EXO_TOKEN: ${{ secrets.EXO_TOKEN }}
