@@ -35,6 +35,7 @@ export default class Weekly extends React.Component {
     this.setState({showSearch: true});
   };
 
+
   render() {
     const {currentEpisode, episodes} = this.props;
     const {showSearch} = this.state;
@@ -43,9 +44,9 @@ export default class Weekly extends React.Component {
     return (
       <div className="container">
         <Navbar />
-        <div>
+        <div style={{ margin: "1rem 0rem" }}>
           {!showSearch && (
-            <button type="button" className="button" onClick={this.showSearch}>
+            <button type="button" className="button" style={{ minWidth: "100%" }} onClick={this.showSearch}>
               Search in the episodes
             </button>
           )}
