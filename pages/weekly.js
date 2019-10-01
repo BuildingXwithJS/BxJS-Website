@@ -2,9 +2,9 @@ import 'bulma/css/bulma.min.css';
 import getConfig from 'next/config';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import Episode from '../components/episode';
 import {getEpisodes} from '../components/github';
 import Navbar from '../components/navbar';
+import SearchEpisode from '../components/searchEpisode';
 
 const {publicRuntimeConfig} = getConfig();
 
@@ -35,6 +35,7 @@ export default class Weekly extends React.Component {
     this.setState({showSearch: true});
   };
 
+
   render() {
     const {currentEpisode, episodes} = this.props;
     const {showSearch} = this.state;
@@ -43,23 +44,30 @@ export default class Weekly extends React.Component {
     return (
       <div className="container">
         <Navbar />
-        <div>
+        <div className="section">
+        <div style={{ margin: "1rem 0rem" }}>
           {!showSearch && (
-            <button type="button" className="button" onClick={this.showSearch}>
+            <button type="button" className="button" style={{ minWidth: "100%" }} onClick={this.showSearch}>
               Search in the episodes
             </button>
           )}
           {showSearch && <Search />}
         </div>
+        <style jsx>{`
+          @media screen and (max-width: 768px) {
+            h2 {
+              font-size: 1.5rem!important;
+            }
+          }
+        `}</style>
         <h1 className="title">BxJS Weekly - {name}</h1>
         <div className="columns">
           <div className="column content is-four-fifths" dangerouslySetInnerHTML={{__html: contentHtml}} />
           <div className="column content">
-            <h2>Episodes list:</h2>
-            {episodes.map(e => (
-              <Episode currentEpisode={currentEpisode} key={e.url} episode={e} />
-            ))}
+            <h4>Episodes list:</h4>
+            <SearchEpisode episodes={episodes} currentEpisode={currentEpisode} />
           </div>
+        </div>
         </div>
       </div>
     );

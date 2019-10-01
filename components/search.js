@@ -51,6 +51,9 @@ export default () => {
     if (e.key === 'Escape') {
       setResults([]);
       setQuery('');
+    } else if (e.key === 'Enter') {
+      // hack: because sometimes search wont work
+      fetchResults(e.target.value, setResults)
     }
   };
 
