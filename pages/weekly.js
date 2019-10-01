@@ -44,6 +44,7 @@ export default class Weekly extends React.Component {
     return (
       <div className="container">
         <Navbar />
+        <div className="section">
         <div style={{ margin: "1rem 0rem" }}>
           {!showSearch && (
             <button type="button" className="button" style={{ minWidth: "100%" }} onClick={this.showSearch}>
@@ -52,6 +53,13 @@ export default class Weekly extends React.Component {
           )}
           {showSearch && <Search />}
         </div>
+        <style jsx>{`
+          @media screen and (max-width: 768px) {
+            h2 {
+              font-size: 1.5rem!important;
+            }
+          }
+        `}</style>
         <h1 className="title">BxJS Weekly - {name}</h1>
         <div className="columns">
           <div className="column content is-four-fifths" dangerouslySetInnerHTML={{__html: contentHtml}} />
@@ -61,6 +69,7 @@ export default class Weekly extends React.Component {
               <Episode currentEpisode={currentEpisode} key={e.url} episode={e} />
             ))}
           </div>
+        </div>
         </div>
       </div>
     );
