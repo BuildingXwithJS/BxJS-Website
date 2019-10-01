@@ -2,9 +2,9 @@ import 'bulma/css/bulma.min.css';
 import getConfig from 'next/config';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import Episode from '../components/episode';
 import {getEpisodes} from '../components/github';
 import Navbar from '../components/navbar';
+import SearchEpisode from '../components/searchEpisode';
 
 const {publicRuntimeConfig} = getConfig();
 
@@ -64,10 +64,8 @@ export default class Weekly extends React.Component {
         <div className="columns">
           <div className="column content is-four-fifths" dangerouslySetInnerHTML={{__html: contentHtml}} />
           <div className="column content">
-            <h2>Episodes list:</h2>
-            {episodes.map(e => (
-              <Episode currentEpisode={currentEpisode} key={e.url} episode={e} />
-            ))}
+            <h4>Episodes list:</h4>
+            <SearchEpisode episodes={episodes} currentEpisode={currentEpisode} />
           </div>
         </div>
         </div>
