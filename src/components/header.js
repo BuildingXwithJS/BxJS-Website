@@ -1,9 +1,9 @@
-import {graphql, Link, useStaticQuery} from 'gatsby';
-import React, {useState} from 'react';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
-  const {site} = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -36,8 +36,8 @@ function Header() {
               title: `Home`,
             },
             {
-              route: `/about`,
-              title: `About`,
+              route: `/episodesList`,
+              title: `All episodes`,
             },
             {
               route: `/contact`,
