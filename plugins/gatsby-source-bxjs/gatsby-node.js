@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const dateFns = require('date-fns');
 const { markdownToDocuments } = require('./episodesToDocuments');
 
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
@@ -16,7 +17,10 @@ exports.sourceNodes = async ({ actions }) => {
   for (const episode of episodes) {
     const episodeUrl = episode.download_url;
     const filename = episode.name;
-    const [, episodeName] = /\d+-\d+-(.+?)\./.exec(filename);
+    const [, year, weeks, episodeName] = /(\d+)-(\d+)-(.+?)\./.exec(filename);
+    const yearDate = dateFns.parse(`20${year}-01-01`, 'yyyy-MM-dd', new Date());
+    const weekDate = dateFns.addWeeks(yearDate, weeks);
+    const episodeDate = dateFns.lastDayOfWeek(weekDate);
     const markdown = await fetch(episodeUrl).then(r => r.text());
     const documents = await markdownToDocuments(markdown);
     documents
@@ -27,6 +31,7 @@ exports.sourceNodes = async ({ actions }) => {
           filename,
           episodeName: episodeName.replace(/-/g, ' '),
           episodeUrl: `/${episodeName.replace(/-/g, '')}`,
+          episodeDate,
         },
         internal: {
           type: 'link',

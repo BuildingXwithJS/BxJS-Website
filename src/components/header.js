@@ -50,10 +50,6 @@ function Header() {
               route: `/episodesList`,
               title: `All episodes`,
             },
-            {
-              route: `/contact`,
-              title: `Contact`,
-            },
           ].map(link => (
             <Link
               className="block md:inline-block mt-4 md:mt-0 md:ml-6 no-underline text-white"
