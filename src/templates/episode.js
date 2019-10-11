@@ -10,7 +10,10 @@ function EpisodePage({
 }) {
   return (
     <Layout>
-      <SEO keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]} title={`BxJS Weekly - `} />
+      <SEO
+        keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]}
+        title={`BxJS Weekly - `}
+      />
 
       <div>
         <pre>{JSON.stringify(group, null, 2)}</pre>

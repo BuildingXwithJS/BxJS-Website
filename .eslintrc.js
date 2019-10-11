@@ -3,7 +3,6 @@ module.exports = {
   extends: ['standard', 'standard-react', 'prettier', 'react-app'],
   plugins: ['prettier', 'react'],
   rules: {
-    'max-len': ['error', 120, 4],
     camelcase: 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',

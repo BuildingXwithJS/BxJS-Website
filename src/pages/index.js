@@ -5,7 +5,10 @@ import SEO from '../components/seo';
 function IndexPage() {
   return (
     <Layout>
-      <SEO keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]} title="BxJS" />
+      <SEO
+        keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]}
+        title="BxJS"
+      />
     </Layout>
   );
 }

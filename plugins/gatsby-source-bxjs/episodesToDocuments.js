@@ -17,7 +17,10 @@ exports.markdownToDocuments = text => {
   const sections = text.split('## ');
   return _(sections)
     .map(section => section.replace(/\r/g, ''))
-    .filter(section => section && section.length > 0 && section.replace(/\n/g, '').length > 0)
+    .filter(
+      section =>
+        section && section.length > 0 && section.replace(/\n/g, '').length > 0
+    )
     .flatMap(text => {
       const [name, linksText] = text.split(/:\n/g);
       if (!linksText) {

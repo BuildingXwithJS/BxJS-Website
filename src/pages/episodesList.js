@@ -10,11 +10,18 @@ function IndexPage({
 }) {
   return (
     <Layout>
-      <SEO keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]} title="BxJS Weekly - All Episodes" />
+      <SEO
+        keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]}
+        title="BxJS Weekly - All Episodes"
+      />
 
       <div>
         {episodes
-          .sort((a, b) => Number(b.replace('Episode ', '')) - Number(a.replace('Episode ', '')))
+          .sort(
+            (a, b) =>
+              Number(b.replace('Episode ', '')) -
+              Number(a.replace('Episode ', ''))
+          )
           .map(episodeName => (
             <div key={episodeName}>
               <Link to={`/${episodeName}`}>{episodeName}</Link>
