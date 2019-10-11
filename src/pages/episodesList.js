@@ -38,7 +38,10 @@ function IndexPage({
         )
         .map(episode => (
           <div key={episode.episodeUrl} className="py-1">
-            <Link className="text-lg" to={`/${episode.episodeUrl}`}>
+            <Link
+              className="text-lg text-blue-700"
+              to={`/${episode.episodeUrl}`}
+            >
               {episode.episodeName}
             </Link>
           </div>
