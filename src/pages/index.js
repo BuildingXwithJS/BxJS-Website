@@ -43,7 +43,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    allLink(sort: { fields: data___episodeDate, order: DESC }) {
+    allLink(sort: { fields: data___episodeDate, order: DESC }, limit: 100) {
       edges {
         node {
           data {

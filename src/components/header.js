@@ -1,5 +1,6 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
+import Search from './search';
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
@@ -41,6 +42,7 @@ function Header() {
             isExpanded ? `block` : `hidden`
           } md:block md:flex md:items-center w-full md:w-auto`}
         >
+          <Search />
           {[
             {
               route: `/episodesList`,
