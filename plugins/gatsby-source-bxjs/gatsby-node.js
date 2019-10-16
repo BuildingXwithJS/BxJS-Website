@@ -1,3 +1,4 @@
+/* eslint no-loop-func: off */
 const fetch = require('node-fetch');
 const dateFns = require('date-fns');
 const { markdownToDocuments } = require('./episodesToDocuments');
@@ -12,7 +13,6 @@ exports.sourceNodes = async ({ actions }) => {
 
   const allItems = [];
   let docId = 1;
-  let episodesLimit = 3;
 
   for (const episode of episodes) {
     const episodeUrl = episode.download_url;
@@ -39,10 +39,6 @@ exports.sourceNodes = async ({ actions }) => {
         },
       }))
       .forEach(item => allItems.push(item));
-    episodesLimit--;
-    if (episodesLimit === 0) {
-      break;
-    }
   }
 
   // import nodes to gatsby
