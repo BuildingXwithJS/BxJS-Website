@@ -1,7 +1,17 @@
 import React from 'react';
 import EpisodeSection from './episodeSection';
 
+const groupsList = [
+  'Getting started',
+  'Articles & News',
+  'Tips, tricks & bit-sized awesomeness',
+  'Releases',
+  'Libs & demos',
+  'Interesting & silly stuff',
+];
+
 function Episode({ name, date, groups }) {
+  console.log(groupsList, groups);
   return (
     <div>
       <div className="flex items-center pb-1 pt-4">
@@ -11,13 +21,15 @@ function Episode({ name, date, groups }) {
         </span>
       </div>
 
-      {groups.map(group => (
-        <EpisodeSection
-          key={group.fieldValue}
-          name={group.fieldValue}
-          links={group.edges}
-        />
-      ))}
+      {groupsList
+        .filter(groupName => groups.find(g => g.fieldValue === groupName))
+        .map(groupName => (
+          <EpisodeSection
+            key={groupName}
+            name={groupName}
+            links={groups.find(g => g.fieldValue === groupName).edges}
+          />
+        ))}
     </div>
   );
 }
