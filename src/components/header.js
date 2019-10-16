@@ -43,10 +43,6 @@ function Header() {
         >
           {[
             {
-              route: `/`,
-              title: `Home`,
-            },
-            {
               route: `/episodesList`,
               title: `All episodes`,
             },

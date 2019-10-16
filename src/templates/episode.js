@@ -9,7 +9,8 @@ function EpisodePage({
     allLink: { group: groups },
   },
 }) {
-  const episodeName = groups[0].edges[0].node.data.episodeName;
+  const firstEntry = groups[0].edges[0].node.data;
+  const { episodeName, episodeDate } = firstEntry;
 
   return (
     <Layout>
@@ -18,16 +19,7 @@ function EpisodePage({
         title={`BxJS Weekly - `}
       />
 
-      <h1 className="text-3xl pt-4">{episodeName}</h1>
-
-      {groups.map(group => (
-        <Episode
-          key={group.fieldValue}
-          name={group.fieldValue}
-          date={group.edges[0].node.data.episodeDate}
-          links={group.edges}
-        />
-      ))}
+      <Episode name={episodeName} date={episodeDate} groups={groups} />
     </Layout>
   );
 }

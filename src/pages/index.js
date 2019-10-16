@@ -1,3 +1,5 @@
+import { graphql } from 'gatsby';
+import _ from 'lodash';
 import React from 'react';
 import Episode from '../components/episode';
 import Layout from '../components/layout';
@@ -13,6 +15,14 @@ function IndexPage({
     ({ node }) => node.data.episodeName === episodeName
   );
 
+  const groupedByCategory = _.groupBy(links, ({ node }) => node.data.category);
+  const groups = Object.keys(groupedByCategory)
+    .map(category => ({
+      fieldValue: category,
+      edges: groupedByCategory[category],
+    }))
+    .flat();
+
   return (
     <Layout>
       <SEO
@@ -20,9 +30,11 @@ function IndexPage({
         title="BxJS"
       />
 
-      <h1 className="text-3xl	py-4">Latest episode</h1>
-
-      <Episode name={episodeName} date={episodeDate} links={links} />
+      <Episode
+        name={`Latest ${episodeName}`}
+        date={episodeDate}
+        groups={groups}
+      />
     </Layout>
   );
 }
