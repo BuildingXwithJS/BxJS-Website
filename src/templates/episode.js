@@ -18,7 +18,7 @@ function EpisodePage({
         title={`BxJS Weekly - `}
       />
 
-      <h1 className="text-3xl	py-4">{episodeName}</h1>
+      <h1 className="text-3xl pt-4">{episodeName}</h1>
 
       {groups.map(group => (
         <Episode
