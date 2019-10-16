@@ -42,6 +42,10 @@ function Search() {
 
   const handleSearch = e => {
     const input = e.target.value;
+    if (input.length === 0) {
+      setResults([]);
+      return;
+    }
     const found = fuse.search(input);
     setResults(found);
   };
