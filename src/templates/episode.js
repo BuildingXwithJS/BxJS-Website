@@ -6,12 +6,11 @@ import SEO from '../components/seo';
 
 function EpisodePage({
   data: {
-    allLink: { group: groups },
+    allEpisode: {
+      edges: [episode],
+    },
   },
 }) {
-  const firstEntry = groups[0].edges[0].node.data;
-  const { episodeName, episodeDate } = firstEntry;
-
   return (
     <Layout>
       <SEO
@@ -19,7 +18,7 @@ function EpisodePage({
         title={`BxJS Weekly - `}
       />
 
-      <Episode name={episodeName} date={episodeDate} groups={groups} />
+      <Episode data={episode.node.data} />
     </Layout>
   );
 }
@@ -28,18 +27,17 @@ export default EpisodePage;
 
 export const pageQuery = graphql`
   query($path: String!) {
-    allLink(filter: { data: { episodeUrl: { eq: $path } } }) {
-      group(field: data___category) {
-        field
-        fieldValue
-        edges {
-          node {
-            id
-            data {
+    allEpisode(filter: { data: { episodeUrl: { eq: $path } } }) {
+      edges {
+        node {
+          id
+          data {
+            episodeName
+            episodeUrl
+            episodeDate
+            filename
+            links {
               category
-              episodeName
-              episodeDate
-              filename
               title
               urls
               urlsSet

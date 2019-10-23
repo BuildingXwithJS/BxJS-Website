@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import React, { useMemo, useState } from 'react';
 
 const fuseOptions = {
@@ -12,7 +12,7 @@ const fuseOptions = {
   keys: ['node.data.urls', 'node.data.title'],
 };
 
-const allDataQuery = graphql`
+/*const allDataQuery = graphql`
   query {
     allLink(sort: { fields: data___episodeDate, order: DESC }) {
       edges {
@@ -30,12 +30,13 @@ const allDataQuery = graphql`
       }
     }
   }
-`;
+`;*/
 
 function Search() {
-  const {
+  /*const {
     allLink: { edges: searchData },
-  } = useStaticQuery(allDataQuery);
+  } = useStaticQuery(allDataQuery);*/
+  const searchData = [];
   const [results, setResults] = useState([]);
 
   const fuse = useMemo(() => new Fuse(searchData, fuseOptions), []);

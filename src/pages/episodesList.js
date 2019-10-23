@@ -5,22 +5,9 @@ import SEO from '../components/seo';
 
 function IndexPage({
   data: {
-    allLink: { edges },
+    allEpisode: { edges: episodes },
   },
 }) {
-  const episodes = [];
-  edges
-    .map(({ node }) => ({
-      episodeUrl: node.data.episodeUrl,
-      episodeName: node.data.episodeName,
-    }))
-    .forEach(ep => {
-      if (episodes.find(e => e.episodeUrl === ep.episodeUrl)) {
-        return;
-      }
-      episodes.push(ep);
-    });
-
   return (
     <Layout>
       <SEO
@@ -30,22 +17,16 @@ function IndexPage({
 
       <h1 className="text-3xl	py-4">Episodes list</h1>
 
-      {episodes
-        .sort(
-          (a, b) =>
-            Number(b.episodeUrl.replace('/Episode', '')) -
-            Number(a.episodeUrl.replace('/Episode', ''))
-        )
-        .map(episode => (
-          <div key={episode.episodeUrl} className="py-1">
-            <Link
-              className="text-lg text-blue-700"
-              to={`/${episode.episodeUrl}`}
-            >
-              {episode.episodeName}
-            </Link>
-          </div>
-        ))}
+      {episodes.map(episode => (
+        <div key={episode.node.id} className="py-1">
+          <Link
+            className="text-lg text-blue-700"
+            to={`/${episode.node.data.episodeUrl}`}
+          >
+            {episode.node.data.episodeName}
+          </Link>
+        </div>
+      ))}
     </Layout>
   );
 }
@@ -54,12 +35,14 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    allLink {
+    allEpisode(sort: { fields: data___episodeDate, order: DESC }) {
       edges {
         node {
+          id
           data {
-            episodeUrl
+            episodeDate
             episodeName
+            episodeUrl
           }
         }
       }

@@ -6,10 +6,10 @@ function EpisodeSection({ name, links }) {
       <h2 className="text-xl pr-2 pb-1 pt-4">{name}</h2>
 
       <ul>
-        {links.map(({ node }) => (
-          <li key={node.id} className="py-1">
-            <a className="text-blue-700" href={node.data.urls}>
-              {node.data.title}
+        {links.map(({ urls, title }) => (
+          <li key={urls} className="py-1">
+            <a className="text-blue-700" href={urls}>
+              {title}
             </a>
           </li>
         ))}

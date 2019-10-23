@@ -5,7 +5,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const episodeTemplate = path.resolve('./src/templates/episode.js');
   const episodesResult = await graphql(`
     {
-      allLink {
+      allEpisode {
         distinct(field: data___episodeUrl)
       }
     }
@@ -13,7 +13,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   if (episodesResult.errors) {
     return Promise.reject(episodesResult.errors);
   }
-  episodesResult.data.allLink.distinct.forEach(episodeUrl => {
+  episodesResult.data.allEpisode.distinct.forEach(episodeUrl => {
     createPage({
       path: episodeUrl,
       component: episodeTemplate,

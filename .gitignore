@@ -12,3 +12,6 @@ yarn-error.log
 
 # deployment-specific configs
 now.json
+
+# ignore generated search json file
+static/links.json
