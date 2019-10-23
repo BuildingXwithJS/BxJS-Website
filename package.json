@@ -13,6 +13,7 @@
     "gatsby-plugin-purgecss": "4.0.1",
     "gatsby-plugin-react-helmet": "3.1.10",
     "graphql": "14.5.8",
+    "loaders.css": "^0.1.2",
     "lodash": "^4.17.15",
     "node-fetch": "^2.6.0",
     "prop-types": "15.7.2",
@@ -59,6 +60,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "2.1.2",
     "eslint-plugin-standard": "^4.0.1",
+    "gatsby-plugin-workerize-loader": "^1.1.0",
     "prettier": "1.18.2",
     "tailwindcss": "1.1.2",
     "typescript": "3.6.3"

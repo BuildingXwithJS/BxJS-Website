@@ -5,6 +5,7 @@ module.exports = {
     author: `@yamalight`,
   },
   plugins: [
+    `gatsby-plugin-workerize-loader`,
     `gatsby-source-bxjs`,
     `gatsby-plugin-react-helmet`,
     {
