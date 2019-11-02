@@ -30,7 +30,7 @@
     "fastify": "^2.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "lru-cache": "^5.1.1",
-    "mongoose": "^5.4.16",
+    "mongoose": "^5.7.5",
     "next": "^8.0.3",
     "nlcst-to-string": "^2.0.2",
     "p-queue": "^3.1.0",
