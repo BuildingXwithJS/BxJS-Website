@@ -1,4 +1,4 @@
+.cache
 .git
-.next
 node_modules
-indexes/index.json
+src
