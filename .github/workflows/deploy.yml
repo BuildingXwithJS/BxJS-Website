@@ -1,4 +1,4 @@
-name: Deploy with Exoframe
+name: Deploy
 
 on:
   push:
@@ -8,19 +8,33 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: deploy with exoframe
-        uses: ./actions/deploy
-        with:
-          endpoint: https://exoframe.codezen.net
-          token: ${{ secrets.EXO_TOKEN }}
+          node-version: 12
+      - name: install
+        run: |
+          yarn install
+      - name: build
+        run: yarn build
+      - name: deploy
+        run: npx exoframe -u -e https://exoframe.codezen.net -t $EXO_TOKEN
+        env:
+          EXO_TOKEN: ${{ secrets.EXO_TOKEN }}
+  syncBranches:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: merge master to develop
+        run: |
+          git config --global user.email "bot@bxjs.dev"
+          git config --global user.name "BxJS Bot"
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+          git checkout develop
+          git merge origin/master
+          git push origin develop
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

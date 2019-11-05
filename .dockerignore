@@ -1,0 +1,4 @@
+.cache/
+.git/
+node_modules/
+src/
