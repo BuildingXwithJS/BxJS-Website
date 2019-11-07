@@ -4,8 +4,7 @@
 
 .search-results {
   height: calc(100vh - 100px);
-  margin-top: 30px;
-  @apply absolute w-1/3 overflow-auto;
+  @apply absolute overflow-auto;
 }
 
 .loader {
