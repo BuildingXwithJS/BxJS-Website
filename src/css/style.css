@@ -11,3 +11,7 @@
   transform: scale(0.5, 0.5);
   width: 30px;
 }
+
+.social-link {
+  @apply flex my-3 items-center;
+}
