@@ -34,8 +34,8 @@ function IndexPage({
 
       <h1 className="text-3xl	py-4">BxJS</h1>
 
-      <div className="flex">
-        <div className="m-4">
+      <div className="socials">
+        <div className="social-row">
           <a
             href="https://www.youtube.com/c/TimErmilov"
             className="social-link"
@@ -49,7 +49,7 @@ function IndexPage({
             <FaTwitter className="mr-2" /> Twitter
           </a>
         </div>
-        <div className="m-4">
+        <div className="social-row">
           <a href="https://www.twitch.tv/yamalight" className="social-link">
             <FaTwitch className="mr-2" /> Twitch
           </a>
@@ -63,7 +63,7 @@ function IndexPage({
             <FaFacebook className="mr-2" /> Facebook
           </a>
         </div>
-        <div className="m-4">
+        <div className="social-row">
           <a
             href="https://castbox.fm/channel/id1378315"
             className="social-link"
@@ -80,7 +80,7 @@ function IndexPage({
             <FaAt className="mr-2" /> Email
           </a>
         </div>
-        <div className="m-4">
+        <div className="social-row">
           <a
             href="https://itunes.apple.com/us/podcast/bxjs-weekly/id1441956525"
             className="social-link"
