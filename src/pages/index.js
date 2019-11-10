@@ -14,8 +14,8 @@ function IndexPage({
   return (
     <Layout>
       <SEO
-        keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]}
-        title="BxJS"
+        keywords={[`bxjs`, `podcast`, `bxjs-weekly`, `javascript`, `react`]}
+        title="BxJS - javascript community"
       />
 
       <Episode data={episode.node.data} />

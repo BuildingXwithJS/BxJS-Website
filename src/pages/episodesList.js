@@ -15,7 +15,7 @@ function IndexPage({
         title="BxJS Weekly - All Episodes"
       />
 
-      <h1 className="text-3xl	py-4">Episodes list</h1>
+      <h1 className="text-3xl	py-4">BxJS Weekly - Episodes list</h1>
 
       {episodes.map(episode => (
         <div key={episode.node.id} className="py-1">
@@ -24,6 +24,10 @@ function IndexPage({
             to={`/${episode.node.data.episodeUrl}`}
           >
             {episode.node.data.episodeName}
+            <span className="pl-2 text-gray-500 text-base">
+              from{' '}
+              {new Date(episode.node.data.episodeDate).toLocaleDateString()}
+            </span>
           </Link>
         </div>
       ))}
