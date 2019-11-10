@@ -3,6 +3,7 @@ module.exports = {
     title: `BxJS`,
     description: `BxJS - or "Building X with JS" - is a web video series, live podcast as well as a community of like-minded people. The main goal of BxJS is to teach everyone to build awesome things with javascript.`,
     author: `@yamalight`,
+    siteUrl: `https://bxjs.dev`,
   },
   plugins: [
     `gatsby-plugin-workerize-loader`,
@@ -11,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-tailwind`,
+        name: `gatsby-bxjs-website`,
         short_name: `bjxs`,
         start_url: `/`,
         background_color: `#ffffff`,
@@ -26,6 +27,24 @@ module.exports = {
       options: {
         tailwind: true,
         purgeOnly: [`src/css/style.css`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [require('./rss-feed')],
       },
     },
     `gatsby-plugin-offline`,

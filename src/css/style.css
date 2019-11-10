@@ -11,3 +11,19 @@
   transform: scale(0.5, 0.5);
   width: 30px;
 }
+
+.socials {
+  @apply flex flex-wrap;
+}
+
+.social-row {
+  @apply m-2;
+
+  @screen md {
+    @apply m-4;
+  }
+}
+
+.social-link {
+  @apply flex my-3 items-center;
+}

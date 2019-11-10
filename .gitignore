@@ -15,3 +15,4 @@ now.json
 
 # ignore generated search json file
 static/links.json
+plugins/gatsby-source-bxjs/episode.cache.json

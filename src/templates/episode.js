@@ -15,7 +15,7 @@ function EpisodePage({
     <Layout>
       <SEO
         keywords={[`bxjs`, `bxjs-weekly`, `javascript`, `react`]}
-        title={`BxJS Weekly - `}
+        title={`BxJS Weekly - ${episode.node.data.episodeName}`}
       />
 
       <Episode data={episode.node.data} />
