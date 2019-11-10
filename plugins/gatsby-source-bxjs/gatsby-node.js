@@ -3,11 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const dateFns = require('date-fns');
+const MarkdownIt = require('markdown-it');
 const { markdownToDocuments } = require('./episodesToDocuments');
 
+// markdown parser
+const md = new MarkdownIt();
+
+// cache
 const CACHE_EXPIRES_IN_DAYS = 2;
 const cachePath = path.join(__dirname, 'episode.cache.json');
 
+// episode fetching
 const baseUrl = 'https://api.github.com/repos/BuildingXwithJS/bxjs-weekly';
 const episodesListUrl = `${baseUrl}/contents/links`;
 
@@ -68,6 +74,8 @@ exports.sourceNodes = async ({ actions }) => {
         episodeName: episodeName.replace(/-/g, ' '),
         episodeUrl: `/${episodeName.replace(/-/g, '')}`,
         episodeDate,
+        markdown,
+        html: md.render(markdown),
         links: documents,
       },
       internal: {
