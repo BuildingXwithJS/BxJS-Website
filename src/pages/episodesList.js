@@ -18,7 +18,7 @@ function IndexPage({
       <h1 className="text-3xl	py-4">BxJS Weekly - Episodes list</h1>
 
       {episodes.map(episode => (
-        <div key={episode.node.id} className="py-1">
+        <div key={episode.node.id} className="py-1 hover:underline">
           <Link
             className="text-lg text-blue-700"
             to={`/${episode.node.data.episodeUrl}`}
