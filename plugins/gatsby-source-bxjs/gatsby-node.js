@@ -52,7 +52,7 @@ exports.sourceNodes = async ({ actions }) => {
     const filename = episode.name;
     const [, year, weeks, episodeName] = /(\d+)-(\d+)-(.+?)\./.exec(filename);
     const yearDate = dateFns.parse(`20${year}-01-01`, 'yyyy-MM-dd', new Date());
-    const weekDate = dateFns.addWeeks(yearDate, weeks);
+    const weekDate = dateFns.addWeeks(yearDate, weeks - 1);
     const episodeDate = dateFns.lastDayOfWeek(weekDate);
     const markdown = await fetch(episodeUrl).then(r => r.text());
     const documents = await markdownToDocuments(markdown);
