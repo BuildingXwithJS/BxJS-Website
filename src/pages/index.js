@@ -65,10 +65,10 @@ function IndexPage({
         </div>
         <div className="social-row">
           <a
-            href="https://castbox.fm/channel/id1378315"
+            href="https://anchor.fm/bxjs-weekly"
             className="social-link"
           >
-            <FaPodcast className="mr-2" /> Castbox
+            <FaPodcast className="mr-2" /> Anchor.fm
           </a>
           <a
             href="https://www.reddit.com/r/BuildingWithJS"
