@@ -14,5 +14,6 @@ jobs:
       - name: install
         run: |
           yarn install
+          yarn lint
       - name: build
         run: yarn build
