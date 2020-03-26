@@ -72,7 +72,7 @@ exports.sourceNodes = async ({ actions }) => {
 
     // create new episode and use links inside of it
     const newEpisode = {
-      id: `${(docId += 1)}`,
+      id: `${docId++}`,
       data: {
         filename,
         episodeName: episodeName.replace(/-/g, ' '),

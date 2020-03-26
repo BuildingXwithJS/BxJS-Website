@@ -22,10 +22,10 @@ exports.markdownToDocuments = text => {
       section =>
         section && section.length > 0 && section.replace(/\n/g, '').length > 0
     )
-    .flatMap(text2 => {
-      const [name, linksText] = text2.split(/:\n/g);
+    .flatMap(text => {
+      const [name, linksText] = text.split(/:\n/g);
       if (!linksText) {
-        console.error('Error processing episode:', text2);
+        console.error('Error processing episode:', text);
         return _([]);
       }
       const sectionName = name.trim();
