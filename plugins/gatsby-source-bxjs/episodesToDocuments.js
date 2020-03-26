@@ -20,7 +20,7 @@ exports.markdownToDocuments = text => {
     .map(section => section.replace(/\r/g, ''))
     .filter(
       section =>
-        section && section.length > 0 && section.replace(/\n/g, '').length > 0,
+        section && section.length > 0 && section.replace(/\n/g, '').length > 0
     )
     .flatMap(text2 => {
       const [name, linksText] = text2.split(/:\n/g);

@@ -93,7 +93,7 @@ exports.sourceNodes = async ({ actions }) => {
   // save json used for search
   fs.writeFileSync(
     path.join(__dirname, '..', '..', 'static', 'links.json'),
-    JSON.stringify(allSearchItems),
+    JSON.stringify(allSearchItems)
   );
   // import nodes to gatsby
   allEpisodes.forEach(item => createNode(item));
