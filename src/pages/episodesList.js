@@ -25,7 +25,8 @@ function IndexPage({
           >
             {episode.node.data.episodeName}
             <span className="pl-2 text-gray-500 text-base">
-              from{' '}
+              from
+              {' '}
               {new Date(episode.node.data.episodeDate).toLocaleDateString()}
             </span>
           </Link>

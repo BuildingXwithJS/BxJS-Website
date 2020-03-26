@@ -40,44 +40,59 @@ function IndexPage({
             href="https://www.youtube.com/c/TimErmilov"
             className="social-link"
           >
-            <FaYoutube className="mr-2" /> YouTube
+            <FaYoutube className="mr-2" />
+            {' '}
+            YouTube
           </a>
           <a href="https://discord.gg/hnKCXqQ" className="social-link">
-            <FaDiscord className="mr-2" /> Discord
+            <FaDiscord className="mr-2" />
+            {' '}
+            Discord
           </a>
           <a href="https://twitter.com/yamalight" className="social-link">
-            <FaTwitter className="mr-2" /> Twitter
+            <FaTwitter className="mr-2" />
+            {' '}
+            Twitter
           </a>
         </div>
         <div className="social-row">
           <a href="https://www.twitch.tv/yamalight" className="social-link">
-            <FaTwitch className="mr-2" /> Twitch
+            <FaTwitch className="mr-2" />
+            {' '}
+            Twitch
           </a>
           <a href="https://github.com/BuildingXwithJS" className="social-link">
-            <FaGithub className="mr-2" /> Github
+            <FaGithub className="mr-2" />
+            {' '}
+            Github
           </a>
           <a
             href="https://www.facebook.com/buildingproductswithjs/"
             className="social-link"
           >
-            <FaFacebook className="mr-2" /> Facebook
+            <FaFacebook className="mr-2" />
+            {' '}
+            Facebook
           </a>
         </div>
         <div className="social-row">
-          <a
-            href="https://anchor.fm/bxjs-weekly"
-            className="social-link"
-          >
-            <FaPodcast className="mr-2" /> Anchor.fm
+          <a href="https://anchor.fm/bxjs-weekly" className="social-link">
+            <FaPodcast className="mr-2" />
+            {' '}
+            Anchor.fm
           </a>
           <a
             href="https://www.reddit.com/r/BuildingWithJS"
             className="social-link"
           >
-            <FaReddit className="mr-2" /> Reddit
+            <FaReddit className="mr-2" />
+            {' '}
+            Reddit
           </a>
           <a href="mailto:yamalight@gmail.com" className="social-link">
-            <FaAt className="mr-2" /> Email
+            <FaAt className="mr-2" />
+            {' '}
+            Email
           </a>
         </div>
         <div className="social-row">
@@ -85,13 +100,19 @@ function IndexPage({
             href="https://itunes.apple.com/us/podcast/bxjs-weekly/id1441956525"
             className="social-link"
           >
-            <FaItunes className="mr-2" /> iTunes
+            <FaItunes className="mr-2" />
+            {' '}
+            iTunes
           </a>
           <a href="https://dev.to/yamalight" className="social-link">
-            <FaDev className="mr-2" /> Dev.to
+            <FaDev className="mr-2" />
+            {' '}
+            Dev.to
           </a>
           <a href="https://codezen.net/support.html" className="social-link">
-            <FaDonate className="mr-2" /> Support me
+            <FaDonate className="mr-2" />
+            {' '}
+            Support me
           </a>
         </div>
       </div>

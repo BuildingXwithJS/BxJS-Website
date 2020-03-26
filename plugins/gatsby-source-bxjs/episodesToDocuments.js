@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const _ = require('highland');
 
 // gets all links from string
@@ -19,12 +20,12 @@ exports.markdownToDocuments = text => {
     .map(section => section.replace(/\r/g, ''))
     .filter(
       section =>
-        section && section.length > 0 && section.replace(/\n/g, '').length > 0
+        section && section.length > 0 && section.replace(/\n/g, '').length > 0,
     )
-    .flatMap(text => {
-      const [name, linksText] = text.split(/:\n/g);
+    .flatMap(text2 => {
+      const [name, linksText] = text2.split(/:\n/g);
       if (!linksText) {
-        console.error('Error processing episode:', text);
+        console.error('Error processing episode:', text2);
         return _([]);
       }
       const sectionName = name.trim();

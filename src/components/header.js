@@ -26,6 +26,7 @@ function Header() {
         <button
           className="block md:hidden border border-white flex items-center px-3 py-2 rounded text-white"
           onClick={() => toggleExpansion(!isExpanded)}
+          type="button"
         >
           <svg
             className="fill-current w-3"
