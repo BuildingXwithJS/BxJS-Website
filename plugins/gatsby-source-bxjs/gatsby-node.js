@@ -1,8 +1,3 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-console */
-/* eslint no-loop-func: off */
-/* FIXME: Remove eslint-disable comments and Fix all eslint errors */
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
