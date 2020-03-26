@@ -1,4 +1,8 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
 /* eslint no-loop-func: off */
+/* FIXME: Remove eslint-disable comments and Fix all eslint errors */
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
@@ -68,7 +72,7 @@ exports.sourceNodes = async ({ actions }) => {
 
     // create new episode and use links inside of it
     const newEpisode = {
-      id: `${docId++}`,
+      id: `${(docId += 1)}`,
       data: {
         filename,
         episodeName: episodeName.replace(/-/g, ' '),
@@ -89,7 +93,7 @@ exports.sourceNodes = async ({ actions }) => {
   // save json used for search
   fs.writeFileSync(
     path.join(__dirname, '..', '..', 'static', 'links.json'),
-    JSON.stringify(allSearchItems)
+    JSON.stringify(allSearchItems),
   );
   // import nodes to gatsby
   allEpisodes.forEach(item => createNode(item));

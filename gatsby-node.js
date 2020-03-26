@@ -20,4 +20,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       context: {},
     });
   });
+
+  return Promise.resolve();
 };

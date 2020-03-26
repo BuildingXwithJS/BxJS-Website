@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React, { useRef, useState } from 'react';
 import Loader from './loader';
-import SearchWorker from './search.worker.js';
+import SearchWorker from './search.worker';
 
 const searchWorker = typeof window === 'object' && new SearchWorker();
 
