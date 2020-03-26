@@ -64,10 +64,7 @@ function IndexPage({
           </a>
         </div>
         <div className="social-row">
-          <a
-            href="https://anchor.fm/bxjs-weekly"
-            className="social-link"
-          >
+          <a href="https://anchor.fm/bxjs-weekly" className="social-link">
             <FaPodcast className="mr-2" /> Anchor.fm
           </a>
           <a
