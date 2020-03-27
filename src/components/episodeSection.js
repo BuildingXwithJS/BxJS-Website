@@ -8,7 +8,7 @@ function EpisodeSection({ name, links }) {
       <ul>
         {links.map(({ urls, title }) => (
           <li key={urls} className="py-1">
-            <a className="text-blue-700 hover:underline" href={urls} target="_blank" ref="nofolow">
+            <a className="text-blue-700 hover:underline" href={urls} target="_blank" rel="nofolow">
               {title}
             </a>
           </li>
