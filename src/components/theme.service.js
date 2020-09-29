@@ -1,5 +1,3 @@
-import React, { useRef, useState } from 'react';
-
 const DarkTheme = {
     isEnabled: false,
     subscribers: [],
