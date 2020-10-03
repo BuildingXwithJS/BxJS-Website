@@ -14,7 +14,9 @@ const getResults = async input => {
 function Search() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(DarkTheme.isEnabled);
+  const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(
+    DarkTheme.isEnabled
+  );
   DarkTheme.subscribe(setIsDarkThemeEnabled);
 
   const debounceRef = useRef();
@@ -44,7 +46,11 @@ function Search() {
       {loading && <Loader />}
       <div className="mt-3 md:mt-0">
         <input
-          className={`${isDarkThemeEnabled?`text-gray-600 bg-gray-900`:`border text-gray-700`} shadow appearance-none rounded-full w-full py-2 px-3 text-sm leading-tight focus:outline-none focus:shadow-outline`}
+          className={`${
+            isDarkThemeEnabled
+              ? `text-gray-600 bg-gray-900`
+              : `border text-gray-700`
+          } shadow appearance-none rounded-full w-full py-2 px-3 text-sm leading-tight focus:outline-none focus:shadow-outline`}
           id="search"
           type="text"
           placeholder="Search.."
@@ -54,12 +60,18 @@ function Search() {
         <div className="search-results w-11/12 md:w-1/3 mt-10 md:mt-8">
           {results.slice(0, 10).map(it => (
             <div
-            className={`${isDarkThemeEnabled?`bg-gray-800`:`bg-gray-100`} mx-auto flex p-6 m-2 rounded-lg shadow-lg mr-2`}
+              className={`${
+                isDarkThemeEnabled ? `bg-gray-800` : `bg-gray-100`
+              } mx-auto flex p-6 m-2 rounded-lg shadow-lg mr-2`}
               key={it.urls}
             >
               <div className="flex flex-col flex-1">
                 <a href={it.urls} target="_blank" rel="noopener noreferrer">
-                  <h4 className={`${isDarkThemeEnabled?`text-gray-700`:`text-gray-900`} text-xl leading-tight`} >
+                  <h4
+                    className={`${
+                      isDarkThemeEnabled ? `text-gray-700` : `text-gray-900`
+                    } text-xl leading-tight`}
+                  >
                     {it.title}
                   </h4>
                 </a>
