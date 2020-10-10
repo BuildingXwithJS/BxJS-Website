@@ -5,7 +5,7 @@ module.exports = {
       date: node.data.episodeDate,
       url: site.siteMetadata.siteUrl + node.data.episodeUrl,
       guid: site.siteMetadata.siteUrl + node.data.episodeUrl,
-      custom_elements: [{ 'content:encoded': node.data.html }],
+      description: node.data.html,
     }));
   },
   query: `
