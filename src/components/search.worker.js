@@ -20,6 +20,6 @@ const init = async () => {
 init();
 
 export function search(input) {
-  const found = fuse.search(input);
+  const found = fuse.search(input).map(res => res.item);
   return found;
 }

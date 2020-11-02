@@ -21,7 +21,7 @@ function IndexPage({
         <div key={episode.node.id} className="py-1 hover:underline">
           <Link
             className="text-lg text-blue-700"
-            to={`/${episode.node.data.episodeUrl}`}
+            to={`${episode.node.data.episodeUrl}`}
           >
             {episode.node.data.episodeName}
             <span className="pl-2 text-gray-500 text-base">

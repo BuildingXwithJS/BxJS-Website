@@ -10,15 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js 12
+      - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
       - name: install
-        run: |
-          yarn install
+        run: npm install
+      - name: analyze
+        run: npm run analyze
       - name: build
-        run: yarn build
+        run: npm run build
       - name: deploy
         run: npx exoframe -u -e https://exoframe.codezen.net -t $EXO_TOKEN
         env:

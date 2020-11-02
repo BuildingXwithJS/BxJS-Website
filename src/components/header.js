@@ -1,9 +1,13 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
+import MoonIcon from './moonIcon';
 import Search from './search';
+import SunIcon from './sunIcon';
+import { themeStyles, useTheme } from './theme';
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -15,16 +19,19 @@ function Header() {
   `);
 
   return (
-    <header className="bg-yellow-600">
+    <header className={themeStyles[theme].headerBg}>
       <div className="flex flex-wrap items-center justify-between max-w-4xl mx-auto p-4">
-        <Link className="flex items-center no-underline text-white" to="/">
+        <Link
+          className={`${themeStyles[theme].headerText} flex items-center no-underline`}
+          to="/"
+        >
           <span className="font-bold text-xl tracking-tight">
             {site.siteMetadata.title}
           </span>
         </Link>
 
         <button
-          className="block md:hidden border border-white flex items-center px-3 py-2 rounded text-white"
+          className={`${themeStyles[theme].headerText} block md:hidden border border-white flex items-center px-3 py-2 rounded`}
           onClick={() => toggleExpansion(!isExpanded)}
         >
           <svg
@@ -57,6 +64,13 @@ function Header() {
               {link.title}
             </Link>
           ))}
+
+          <button
+            className={`${themeStyles[theme].bgHover} ${themeStyles[theme].headerText} font-bold p-2 bg-opacity-0 rounded-full ml-2 focus:outline-none`}
+            onClick={() => toggleTheme()}
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
         </nav>
       </div>
     </header>
