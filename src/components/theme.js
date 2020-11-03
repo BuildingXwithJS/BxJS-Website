@@ -38,7 +38,7 @@ export function ThemeWrapper({ children }) {
   const [theme, setTheme] = useState(() => {
     // if not running in the browser - exit
     if (typeof window !== 'object') {
-      return 'light';
+      return 'dark';
     }
 
     // if have user-defined value locally - use it
@@ -48,12 +48,11 @@ export function ThemeWrapper({ children }) {
     }
 
     // otherwise - use system default preference
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
+    if (window.matchMedia?.('(prefers-color-scheme: dark)')?.matches) {
       return 'dark';
     }
+
+    return 'dark';
   });
 
   return (
