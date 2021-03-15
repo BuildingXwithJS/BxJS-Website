@@ -1,3 +1,4 @@
+const path = require('path');
 const fastify = require('fastify');
 const Next = require('next');
 
@@ -5,6 +6,11 @@ const server = fastify({ logger: { level: 'error' } });
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
+
+server.register(require('fastify-static'), {
+  root: path.join(__dirname, '..', 'public'),
+  prefix: '/public/', // optional: default '/'
+});
 
 server.register(async (instance, opts, next) => {
   const app = Next({ dev });
