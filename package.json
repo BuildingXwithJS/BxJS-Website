@@ -1,74 +1,51 @@
 {
-  "name": "gatsby-starter-tailwind",
-  "description": "Gatsby starter styled with Tailwind",
-  "version": "3.0.141",
-  "author": "Taylor Bryant <taylor@bryant.io>",
+  "name": "bxjs-website",
+  "description": "BxJS Website. Includes AI to auto-generate BxJS Weekly podcast episodes",
+  "version": "1.0.0",
+  "author": "Tim Ermilov <yamalight@gmail.com>",
+  "private": true,
   "dependencies": {
-    "date-fns": "^2.16.1",
-    "fuse.js": "^6.4.2",
-    "gatsby": "^2.24.91",
-    "gatsby-plugin-feed": "^2.5.20",
-    "gatsby-plugin-manifest": "^2.4.37",
-    "gatsby-plugin-offline": "^3.2.38",
-    "gatsby-plugin-postcss": "^3.0.4",
-    "gatsby-plugin-purgecss": "^5.0.0",
-    "gatsby-plugin-react-helmet": "^3.3.14",
-    "graphql": "^14.7.0",
-    "highland": "^2.13.5",
-    "loaders.css": "^0.1.2",
-    "lodash": "^4.17.20",
-    "node-fetch": "^2.6.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-helmet": "^6.1.0",
-    "react-icons": "^3.11.0"
+    "fastify": "^3.14.0",
+    "next": "^10.0.8",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "keywords": [
-    "gatsby",
-    "tailwind",
+    "bxjs",
+    "next",
     "tailwindcss",
-    "purgecss"
+    "fastify",
+    "tensorflow"
   ],
   "license": "MIT",
   "scripts": {
     "analyze:lint": "eslint --ext .jsx --ext .js .",
     "analyze:prettier": "prettier --list-different '**/*.{js,css,md}'",
     "analyze": "npm run analyze:lint && npm run analyze:prettier",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
     "fix:lint": "eslint --ext .jsx --ext .js . --fix",
     "fix:prettier": "prettier --write '**/*.{js,css,md}'",
     "fix": "npm run fix:lint && npm run fix:prettier",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "build": "next build",
+    "dev": "node ./server/index.js",
+    "start": "NODE_ENV=production node ./server/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind"
+    "url": "https://github.com/BuildingXwithJS/BxJS-Website"
   },
   "bugs": {
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind/issues"
+    "url": "https://github.com/BuildingXwithJS/BxJS-Website/issues"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "babel-eslint": "^10.1.0",
-    "cssnano": "^4.1.10",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-config-standard-react": "^9.2.0",
+    "@babel/eslint-parser": "^7.13.10",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-config-standard-react": "^11.0.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.2",
-    "gatsby-plugin-workerize-loader": "^1.5.0",
-    "markdown-it": "^12.0.2",
-    "postcss": "^8.1.4",
-    "prettier": "^2.1.2",
-    "tailwindcss": "^1.9.6",
-    "typescript": "^4.0.5"
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "prettier": "^2.2.1"
   }
 }

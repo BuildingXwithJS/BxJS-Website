@@ -5,14 +5,7 @@ node_modules
 yarn-error.log
 
 # Build directory
-/public
+.next
 
 # macOS
 .DS_Store
-
-# deployment-specific configs
-now.json
-
-# ignore generated search json file
-static/links.json
-plugins/gatsby-source-bxjs/episode.cache.json
