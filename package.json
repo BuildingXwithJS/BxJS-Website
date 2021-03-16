@@ -7,6 +7,7 @@
   "dependencies": {
     "fastify": "^3.14.0",
     "fastify-static": "^4.0.1",
+    "mongoose": "^5.12.0",
     "next": "^10.0.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
@@ -26,6 +27,8 @@
     "fix:lint": "eslint --ext .jsx --ext .js . --fix",
     "fix:prettier": "prettier --write '**/*.{js,css,md}'",
     "fix": "npm run fix:lint && npm run fix:prettier",
+    "mongo:start": "docker run --name mongodb -v `pwd`/mongodb:/data/db -p 27017:27017 -d mongo",
+    "mongo:clean": "docker stop mongodb && docker rm mongodb",
     "build": "next build",
     "dev": "node ./server/index.js",
     "start": "NODE_ENV=production node ./server/index.js"

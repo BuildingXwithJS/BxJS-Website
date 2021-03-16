@@ -1,13 +1,18 @@
-const path = require('path');
-const fastify = require('fastify');
-const Next = require('next');
+import fastify from 'fastify';
+import fastifyStatic from 'fastify-static';
+import Next from 'next';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { isConnected } from './db/index.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const server = fastify({ logger: { level: 'error' } });
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
-server.register(require('fastify-static'), {
+server.register(fastifyStatic, {
   root: path.join(__dirname, '..', 'public'),
   prefix: '/public/', // optional: default '/'
 });
@@ -17,24 +22,24 @@ server.register(async (instance, opts, next) => {
   const handle = app.getRequestHandler();
   await app.prepare();
 
+  // wait for DB connection
+  await isConnected;
+
   if (dev) {
-    instance.get('/_next/*', (req, reply) => {
-      return handle(req.req, reply.res).then(() => {
-        reply.sent = true;
-      });
+    instance.get('/_next/*', async (req, reply) => {
+      await handle(req.raw, reply.res);
+      reply.sent = true;
     });
   }
 
-  instance.all('/*', (req, reply) => {
-    return handle(req.req, reply.res).then(() => {
-      reply.sent = true;
-    });
+  instance.all('/*', async (req, reply) => {
+    await handle(req.raw, reply.res);
+    reply.sent = true;
   });
 
-  instance.setNotFoundHandler((request, reply) => {
-    return app.render404(request.req, reply.res).then(() => {
-      reply.sent = true;
-    });
+  instance.setNotFoundHandler(async (request, reply) => {
+    await app.render404(request.req, reply.res);
+    reply.sent = true;
   });
 
   next();
