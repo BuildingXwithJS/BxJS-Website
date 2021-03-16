@@ -12,3 +12,6 @@ yarn-error.log
 
 # mongo volume
 mongodb
+
+# local env
+.env

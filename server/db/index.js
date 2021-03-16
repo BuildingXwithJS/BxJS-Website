@@ -1,17 +1,15 @@
 import mongoose from 'mongoose';
+import { mongoUrl } from '../config.js';
 
 // destructure used things from CJS module
 const { createConnection, Schema } = mongoose;
 
 // connect to given URL
-export const db = createConnection(
-  process.env.MONGO_URL || 'mongodb://localhost/bxjs',
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  }
-);
+export const db = createConnection(mongoUrl, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 // handle DB errors
 db.on('error', (error) => {

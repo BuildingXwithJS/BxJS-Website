@@ -5,6 +5,7 @@
   "author": "Tim Ermilov <yamalight@gmail.com>",
   "private": true,
   "dependencies": {
+    "dotenv": "^8.2.0",
     "fastify": "^3.14.0",
     "fastify-static": "^4.0.1",
     "mongoose": "^5.12.0",
