@@ -7,6 +7,7 @@ name = "pypi"
 tensorflow = "*"
 tensorflow-hub = "*"
 tensorflow-text = "*"
+tf-models-official = "*"
 
 [dev-packages]
 
