@@ -21,7 +21,7 @@ model = ClassificationModel(
 )
 
 # Make predictions with the model
-predictions, raw_outputs = model.predict([positiveTestSamples[0]])
+predictions, raw_outputs = model.predict(positiveTestSamples + negativeTestSamples)
 
 print('\n\n\n')
 print('predictions:', predictions)

@@ -34,7 +34,7 @@ eval_df = pd.DataFrame(eval_data)
 eval_df.columns = ["text", "labels"]
 
 # Optional model configuration
-model_args = ClassificationArgs(num_train_epochs=1, overwrite_output_dir=True)
+model_args = ClassificationArgs(num_train_epochs=5, overwrite_output_dir=True)
 
 # Create a ClassificationModel
 model = ClassificationModel(
