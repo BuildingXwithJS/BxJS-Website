@@ -1,11 +1,11 @@
 {
   "name": "bxjs-website",
   "description": "BxJS Website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Tim Ermilov <yamalight@gmail.com>",
   "private": true,
   "dependencies": {
-    "next": "^10.0.8",
+    "next": "^10.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -23,8 +23,8 @@
     "fix:prettier": "prettier --write '**/*.{js,css,md}'",
     "fix": "npm run fix:lint && npm run fix:prettier",
     "build": "next build",
-    "dev": "node ./server/index.js",
-    "start": "NODE_ENV=production node ./server/index.js"
+    "dev": "next dev",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -35,15 +35,15 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.10",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-react": "^11.0.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-standard": "^5.0.0",
     "prettier": "^2.2.1"
   }
