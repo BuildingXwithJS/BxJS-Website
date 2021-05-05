@@ -24,3 +24,7 @@ trim_trailing_whitespace = false
 # 4 space indentation
 indent_style = space
 indent_size = 4
+
+[Makefile]
+# tabs indentation
+indent_style = tab
