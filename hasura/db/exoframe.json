@@ -1,0 +1,11 @@
+{
+  "name": "bxjs-db",
+  "domain": false,
+  "project": "bxjs-website",
+  "image": "postgres:12",
+  "env": {
+    "POSTGRES_PASSWORD": "postgrespassword"
+  },
+  "volumes": ["bxjs_db_data:/var/lib/postgresql/data"],
+  "hostname": "bxjspostgres"
+}
