@@ -7,6 +7,6 @@
     "HASURA_GRAPHQL_ENABLE_CONSOLE": "false",
     "HASURA_GRAPHQL_DEV_MODE": "false",
     "HASURA_GRAPHQL_ENABLED_LOG_TYPES": "startup, http-log, webhook-log, websocket-log, query-log",
-    "HASURA_GRAPHQL_ADMIN_SECRET": "localadminsecretkey"
+    "HASURA_GRAPHQL_ADMIN_SECRET": "@bxjs-hasura-token"
   }
 }
