@@ -1,2 +1,2 @@
 console:
-	npx hasura-cli console --admin-secret "localadminsecretkey"
+	npx hasura-cli console --admin-secret "localadminsecret"
