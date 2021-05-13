@@ -1,3 +1,15 @@
 table:
   name: links
   schema: bxjsweekly
+select_permissions:
+- permission:
+    columns:
+    - episode
+    - id
+    - category
+    - title
+    - url
+    - created_at
+    - updated_at
+    filter: {}
+  role: anonymous

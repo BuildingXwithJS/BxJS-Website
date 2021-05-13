@@ -9,3 +9,13 @@ array_relationships:
       table:
         name: links
         schema: bxjsweekly
+select_permissions:
+- permission:
+    columns:
+    - id
+    - name
+    - date
+    - created_at
+    - updated_at
+    filter: {}
+  role: anonymous
