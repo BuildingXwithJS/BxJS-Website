@@ -1,0 +1,11 @@
+table:
+  name: episodes
+  schema: bxjsweekly
+array_relationships:
+- name: links
+  using:
+    foreign_key_constraint_on:
+      column: episode
+      table:
+        name: links
+        schema: bxjsweekly

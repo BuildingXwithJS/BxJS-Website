@@ -1,3 +1,5 @@
+- "!include bxjsweekly_episodes.yaml"
+- "!include bxjsweekly_links.yaml"
 - "!include public_accounts.yaml"
 - "!include public_sessions.yaml"
 - "!include public_users.yaml"
