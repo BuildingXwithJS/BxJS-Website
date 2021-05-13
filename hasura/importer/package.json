@@ -1,0 +1,18 @@
+{
+  "name": "bxjs-importer",
+  "version": "1.0.0",
+  "description": "Imports existing BxJS Weekly data into Hasura",
+  "main": "importer.js",
+  "type": "module",
+  "scripts": {
+    "start": "node importer.js"
+  },
+  "keywords": [],
+  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net/)",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^2.21.3",
+    "graphql-request": "^3.4.0",
+    "node-fetch": "^2.6.1"
+  }
+}
