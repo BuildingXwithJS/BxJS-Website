@@ -5,11 +5,14 @@
   "author": "Tim Ermilov <yamalight@gmail.com>",
   "private": true,
   "dependencies": {
+    "graphql": "^15.5.0",
+    "lodash": "^4.17.21",
     "next": "^10.2.0",
     "next-auth": "^3.19.8",
     "pg": "^8.6.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "urql": "^2.0.3"
   },
   "keywords": [
     "bxjs",
@@ -41,12 +44,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-react": "^11.0.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-standard": "^5.0.0",
     "prettier": "^2.2.1"
   }
 }
