@@ -1,26 +1,14 @@
 import groupBy from 'lodash/groupBy';
+import Episode from '../../components/episode/index.js';
 import { graphqlClient } from '../../components/graphql/client.js';
 import { WEEKLY_EPISODE_BY_NAME } from '../../components/graphql/queries/weekly.js';
+import Layout from '../../components/layout/index.js';
 
 export default function EpisodePage({ episode }) {
   return (
-    <div>
-      <h1>
-        {episode.name} [{new Date(episode.date).toLocaleDateString()}]
-      </h1>
-      <div>
-        {Object.keys(episode.linksByCategory).map((category) => (
-          <div key={category}>
-            <h2>{category}</h2>
-            {episode.linksByCategory[category].map((link) => (
-              <div key={link.id}>
-                <a href={link.url}>{link.title}</a>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
+    <Layout title="BxJS Weekly - Episodes list">
+      <Episode data={episode} />
+    </Layout>
   );
 }
 
