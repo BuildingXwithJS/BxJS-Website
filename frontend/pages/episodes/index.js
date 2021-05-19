@@ -36,13 +36,20 @@ export default function EpisodesListPage({ episodes }) {
 }
 
 export async function getServerSideProps(context) {
-  const {
-    data: { bxjsweekly_episodes },
-  } = await graphqlClient.query(WEEKLY_EPISODES, {}).toPromise();
+  const { data, error } = await graphqlClient
+    .query(WEEKLY_EPISODES, {})
+    .toPromise();
+
+  if (error) {
+    console.error(error);
+  }
+
+  // get episodes
+  const episodes = data?.bxjsweekly_episodes ?? [];
 
   return {
     props: {
-      episodes: bxjsweekly_episodes,
+      episodes,
     }, // will be passed to the page component as props
   };
 }

@@ -20,19 +20,6 @@ export default function HomePage() {
 
   return (
     <Layout>
-      {!session && (
-        <>
-          Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button>
-        </>
-      )}
-      {session && (
-        <>
-          Signed in as {session.user.email} <br />
-          <button onClick={() => signOut()}>Sign out</button>
-        </>
-      )}
-
       <h1 className="text-3xl	py-4">BxJS</h1>
 
       <div className="flex flex-wrap">
@@ -114,6 +101,19 @@ export default function HomePage() {
           </a>
         </div>
       </div>
+
+      {!session && (
+        <>
+          Not signed in <br />
+          <button onClick={() => signIn()}>Sign in</button>
+        </>
+      )}
+      {session && (
+        <>
+          Signed in as {session.user.email} <br />
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )}
     </Layout>
   );
 }

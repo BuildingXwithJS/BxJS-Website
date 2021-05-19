@@ -18,11 +18,15 @@ export async function getServerSideProps(context) {
     params: { name },
   } = context;
 
-  const {
-    data: { bxjsweekly_episodes },
-  } = await graphqlClient.query(WEEKLY_EPISODE_BY_NAME, { name }).toPromise();
+  const { data, error } = await graphqlClient
+    .query(WEEKLY_EPISODE_BY_NAME, { name })
+    .toPromise();
 
-  const episode = bxjsweekly_episodes[0];
+  if (error) {
+    console.error(error);
+  }
+
+  const episode = data?.bxjsweekly_episodes?.[0];
 
   episode.linksByCategory = groupBy(episode.links, 'category');
 
