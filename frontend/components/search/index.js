@@ -1,17 +1,39 @@
 import Link from 'next/link';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
+import { gql, useQuery } from 'urql';
 import Loader from '../loader/index.js';
 import { themeStyles, useTheme } from '../theme/index.js';
 
-const getResults = async (input) => {
-  const results = [];
-  return results;
-};
+const EpisodesQuery = gql`
+  query FindLinks($query: String) {
+    bxjsweekly_links(
+      where: {
+        _or: [{ url: { _ilike: $query } }, { title: { _ilike: $query } }]
+      }
+      limit: 10
+    ) {
+      id
+      url
+      title
+      category
+      episodeData {
+        id
+        name
+      }
+    }
+  }
+`;
 
 function Search() {
   const { theme } = useTheme();
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState('');
+  const [{ data, fetching: loading, error }] = useQuery({
+    query: EpisodesQuery,
+    variables: {
+      query: search,
+    },
+    pause: !search || search.length < 4,
+  });
   const debounceRef = useRef();
 
   const handleSearch = (e) => {
@@ -21,22 +43,20 @@ function Search() {
       clearTimeout(debounceRef.current);
     }
 
-    if (input.length === 0) {
-      setResults([]);
-      return;
-    }
-
-    setLoading(true);
     debounceRef.current = setTimeout(async () => {
-      const found = await getResults(input);
-      setResults(found);
-      setLoading(false);
+      setSearch(`%${input}%`);
     }, 750);
   };
 
+  const results = useMemo(() => data?.bxjsweekly_links ?? [], [data]);
+
   return (
     <>
-      {loading && <Loader />}
+      {loading && (
+        <div className="mr-2">
+          <Loader />
+        </div>
+      )}
       <div className="mt-3 md:mt-0">
         <input
           className={`${themeStyles[theme].searchInput} shadow appearance-none rounded-full w-full py-2 px-3 text-sm leading-tight focus:outline-none focus:shadow-outline`}
@@ -46,31 +66,48 @@ function Search() {
           onChange={handleSearch}
         />
 
-        <div className="absolute overflow-auto w-11/12 md:w-1/3 mt-10 md:mt-8">
-          {results.slice(0, 10).map((it) => (
+        <div className="search-results absolute overflow-auto w-11/12 md:w-1/3 mt-10 md:mt-8">
+          {error && (
             <div
               className={`${themeStyles[theme].searchResult} mx-auto flex p-6 m-2 rounded-lg shadow-lg mr-2`}
-              key={it.urls}
             >
               <div className="flex flex-col flex-1">
-                <a href={it.urls} target="_blank" rel="noopener noreferrer">
-                  <h4
-                    className={`${themeStyles[theme].searchResultTitle} text-xl leading-tight`}
-                  >
-                    {it.title}
-                  </h4>
-                </a>
+                <h4
+                  className={`${themeStyles[theme].searchResultTitle} text-xl leading-tight`}
+                >
+                  Error executing search query!
+                </h4>
                 <p className="text-sm text-gray-600 leading-normal">
-                  {it.category}
+                  {error.toString()}
                 </p>
               </div>
-              <Link href={it.episodeUrl}>
-                <a className="flex items-center text-sm text-gray-600 pl-1">
-                  {it.episodeName}
-                </a>
-              </Link>
             </div>
-          ))}
+          )}
+          {search.length >= 4 &&
+            results.map((it) => (
+              <div
+                className={`${themeStyles[theme].searchResult} mx-auto flex p-6 m-2 rounded-lg shadow-lg mr-2`}
+                key={it.url}
+              >
+                <div className="flex flex-col flex-1">
+                  <a href={it.url} target="_blank" rel="noopener noreferrer">
+                    <h4
+                      className={`${themeStyles[theme].searchResultTitle} text-xl leading-tight`}
+                    >
+                      {it.title}
+                    </h4>
+                  </a>
+                  <p className="text-sm text-gray-600 leading-normal">
+                    {it.category}
+                  </p>
+                </div>
+                <Link href={`/episodes/${it.episodeData.name}`}>
+                  <a className="flex items-center text-sm text-gray-600 pl-1">
+                    {it.episodeData.name}
+                  </a>
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </>

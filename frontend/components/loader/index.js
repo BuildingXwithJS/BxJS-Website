@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactLoading from 'react-loading';
 import { useTheme } from '../theme/index.js';
 
 export default function Loader() {
@@ -8,8 +9,8 @@ export default function Loader() {
     <ReactLoading
       type="spokes"
       color={theme === 'dark' ? 'white' : 'black'}
-      height={64}
-      width={64}
+      height={32}
+      width={32}
     />
   );
 }
