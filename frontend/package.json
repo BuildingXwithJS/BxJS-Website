@@ -5,6 +5,7 @@
   "author": "Tim Ermilov <yamalight@gmail.com>",
   "private": true,
   "dependencies": {
+    "graphiql": "^1.4.1",
     "graphql": "^15.5.0",
     "lodash": "^4.17.21",
     "next": "^10.2.0",

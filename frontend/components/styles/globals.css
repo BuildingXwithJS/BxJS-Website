@@ -5,3 +5,7 @@
 .search-results {
   height: calc(100vh - theme('spacing.20'));
 }
+
+.graphiql-container {
+  @apply flex-1;
+}
