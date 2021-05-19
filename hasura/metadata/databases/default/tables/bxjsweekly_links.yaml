@@ -1,6 +1,10 @@
 table:
   name: links
   schema: bxjsweekly
+object_relationships:
+- name: episodeData
+  using:
+    foreign_key_constraint_on: episode
 select_permissions:
 - permission:
     columns:
