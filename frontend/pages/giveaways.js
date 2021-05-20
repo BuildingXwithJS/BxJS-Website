@@ -38,7 +38,7 @@ export default function GiveawaysPage({ publicGiveaways }) {
 
       {result.fetching && <div>Loading..</div>}
 
-      {userGiveaways.length === 0 && publicGiveaways.length === 0 && (
+      {!userGiveaways?.length && !publicGiveaways?.length && (
         <div>No open giveaways!</div>
       )}
 
