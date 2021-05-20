@@ -1,0 +1,41 @@
+table:
+  name: participants
+  schema: giveaways
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      user:
+        _eq: X-Hasura-User-Id
+    columns:
+    - giveaway
+    set:
+      user: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - created_at
+    - giveaway
+    - id
+    - updated_at
+    - user
+    filter:
+      user:
+        _eq: X-Hasura-User-Id
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - giveaway
+    filter:
+      user:
+        _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      user:
+        _eq: X-Hasura-User-Id
+  role: user

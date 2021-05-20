@@ -1,5 +1,8 @@
 - "!include bxjsweekly_episodes.yaml"
 - "!include bxjsweekly_links.yaml"
+- "!include giveaways_giveaway.yaml"
+- "!include giveaways_participants.yaml"
+- "!include giveaways_prize.yaml"
 - "!include public_accounts.yaml"
 - "!include public_sessions.yaml"
 - "!include public_users.yaml"

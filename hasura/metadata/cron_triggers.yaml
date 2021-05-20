@@ -1,1 +1,5 @@
-[]
+- name: Pick giveaway winners
+  webhook: '{{ACTION_BASE_URL}}/api/pickWinners'
+  schedule: 0 0 * * *
+  include_in_metadata: true
+  payload: {}
