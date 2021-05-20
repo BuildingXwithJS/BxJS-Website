@@ -19,3 +19,12 @@ select_permissions:
     - updated_at
     filter: {}
   role: anonymous
+- permission:
+    columns:
+    - id
+    - name
+    - date
+    - created_at
+    - updated_at
+    filter: {}
+  role: user

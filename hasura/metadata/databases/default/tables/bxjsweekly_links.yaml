@@ -16,4 +16,17 @@ select_permissions:
     - created_at
     - updated_at
     filter: {}
+    limit: 100
   role: anonymous
+- permission:
+    columns:
+    - id
+    - category
+    - title
+    - url
+    - created_at
+    - updated_at
+    - episode
+    filter: {}
+    limit: 100
+  role: user
