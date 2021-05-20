@@ -1,6 +1,8 @@
-export const WEEKLY_EPISODES = `
+import { gql } from 'urql';
+
+export const WEEKLY_EPISODES = gql`
   query GetWeeklyEpisodes {
-    bxjsweekly_episodes(order_by:{date:desc}) {
+    bxjsweekly_episodes(order_by: { date: desc }) {
       id
       name
       date
@@ -10,7 +12,7 @@ export const WEEKLY_EPISODES = `
   }
 `;
 
-export const WEEKLY_EPISODE_BY_NAME = `
+export const WEEKLY_EPISODE_BY_NAME = gql`
   query GetWeeklyEpisodeByName($name: String) {
     bxjsweekly_episodes(where: { name: { _eq: $name } }) {
       id

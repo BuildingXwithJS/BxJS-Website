@@ -1,5 +1,7 @@
+import { signIn } from 'next-auth/client';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { useUser } from '../hooks/user.js';
 import MoonIcon from '../icons/moonIcon.js';
 import SunIcon from '../icons/sunIcon.js';
 import Search from '../search/index.js';
@@ -8,6 +10,7 @@ import { themeStyles, useTheme } from '../theme/index.js';
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { user } = useUser();
 
   return (
     <header className={themeStyles[theme].headerBg}>
@@ -39,6 +42,23 @@ function Header() {
             isExpanded ? `block` : `hidden`
           } md:block md:flex md:items-center w-full md:w-auto`}
         >
+          {user && (
+            <Link href="/giveaways">
+              <a
+                className={`${themeStyles[theme].headerText} flex items-center no-underline mr-4`}
+              >
+                <span className="font-semibold text-lg tracking-tight">
+                  Giveaways
+                </span>
+              </a>
+            </Link>
+          )}
+          {!user && (
+            <button className="flex mr-4" onClick={() => signIn()}>
+              Sign in
+            </button>
+          )}
+
           <Search />
           {[
             {

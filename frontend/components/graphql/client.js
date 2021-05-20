@@ -7,3 +7,19 @@ export const GRAPHQL_URL =
 export const graphqlClient = createClient({
   url: GRAPHQL_URL,
 });
+
+export const createGraphqlClientWithToken = (token) =>
+  createClient({
+    url: GRAPHQL_URL,
+    fetchOptions: () => ({
+      headers: { Authorization: token ? `Bearer ${token}` : '' },
+    }),
+  });
+
+export const createGraphqlClientWithAdminSecret = (secret) =>
+  createClient({
+    url: GRAPHQL_URL,
+    fetchOptions: () => ({
+      headers: { 'X-Hasura-Admin-Secret': secret },
+    }),
+  });

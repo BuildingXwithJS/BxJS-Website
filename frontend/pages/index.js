@@ -1,4 +1,3 @@
-import { signIn, signOut, useSession } from 'next-auth/client';
 import {
   FaAt,
   FaDev,
@@ -16,8 +15,6 @@ import {
 import Layout from '../components/layout/index.js';
 
 export default function HomePage() {
-  const [session] = useSession();
-
   return (
     <Layout>
       <h1 className="text-3xl	py-4">BxJS</h1>
@@ -101,19 +98,6 @@ export default function HomePage() {
           </a>
         </div>
       </div>
-
-      {!session && (
-        <>
-          Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button>
-        </>
-      )}
-      {session && (
-        <>
-          Signed in as {session.user.email} <br />
-          <button onClick={() => signOut()}>Sign out</button>
-        </>
-      )}
     </Layout>
   );
 }
