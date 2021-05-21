@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 import { Provider as UrqlProvider } from 'urql';
 import { createGraphqlClientWithToken } from '../components/graphql/client.js';
 import '../components/styles/globals.css';
-import { ThemeWrapper } from '../components/theme/index.js';
 
 function MyApp({ Component, pageProps, token }) {
   const graphqlClient = useMemo(() => createGraphqlClientWithToken(token), [
@@ -14,9 +13,7 @@ function MyApp({ Component, pageProps, token }) {
   return (
     <Provider session={pageProps.session}>
       <UrqlProvider value={graphqlClient}>
-        <ThemeWrapper>
-          <Component {...pageProps} />
-        </ThemeWrapper>
+        <Component {...pageProps} />
       </UrqlProvider>
     </Provider>
   );

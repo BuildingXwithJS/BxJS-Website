@@ -5,26 +5,24 @@ import { useUser } from '../hooks/user.js';
 import MoonIcon from '../icons/moonIcon.js';
 import SunIcon from '../icons/sunIcon.js';
 import Search from '../search/index.js';
-import { themeStyles, useTheme } from '../theme/index.js';
+import { useTheme } from '../theme/index.js';
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
   const { user } = useUser();
 
   return (
-    <header className={themeStyles[theme].headerBg}>
+    <header className="bg-yellow-600 dark:bg-gray-800">
       <div className="flex flex-wrap items-center justify-between max-w-4xl mx-auto p-4">
         <Link href="/">
-          <a
-            className={`${themeStyles[theme].headerText} flex items-center no-underline`}
-          >
+          <a className="text-white dark:text-gray-400 flex items-center no-underline">
             <span className="font-bold text-xl tracking-tight">BxJS</span>
           </a>
         </Link>
 
         <button
-          className={`${themeStyles[theme].headerText} block md:hidden border border-white flex items-center px-3 py-2 rounded`}
+          className="text-white dark:text-gray-400 block md:hidden border border-white flex items-center px-3 py-2 rounded"
           onClick={() => toggleExpansion(!isExpanded)}
         >
           <svg
@@ -44,9 +42,7 @@ function Header() {
         >
           {user && (
             <Link href="/giveaways">
-              <a
-                className={`${themeStyles[theme].headerText} flex items-center no-underline mr-4`}
-              >
+              <a className="text-white dark:text-gray-400 flex items-center no-underline mr-4">
                 <span className="font-semibold text-lg tracking-tight">
                   Giveaways
                 </span>
@@ -54,7 +50,10 @@ function Header() {
             </Link>
           )}
           {!user && (
-            <button className="flex mr-4" onClick={() => signIn()}>
+            <button
+              className="flex text-white dark:text-gray-400 mr-4"
+              onClick={() => signIn()}
+            >
               Sign in
             </button>
           )}
@@ -74,10 +73,10 @@ function Header() {
           ))}
 
           <button
-            className={`${themeStyles[theme].bgHover} ${themeStyles[theme].headerText} font-bold p-2 bg-opacity-0 rounded-full ml-2 focus:outline-none`}
+            className="bg-white-900 hover:bg-white-900 dark:bg-gray-900 dark:hover:bg-gray-900 text-white dark:text-gray-400 font-bold p-2 bg-opacity-0 rounded-full ml-2 focus:outline-none"
             onClick={() => toggleTheme()}
           >
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
         </nav>
       </div>
