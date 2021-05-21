@@ -12,7 +12,7 @@ export const createGraphqlClientWithToken = (token) =>
   createClient({
     url: GRAPHQL_URL,
     fetchOptions: () => ({
-      headers: { Authorization: token ? `Bearer ${token}` : '' },
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
     }),
   });
 
