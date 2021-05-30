@@ -6,6 +6,7 @@
     "NEXT_PUBLIC_GRAPHQL_ENDPOINT": "https://graphql.bxjs.dev/v1/graphql",
     "DATABASE_URL": "postgres://postgres:postgrespassword@bxjspostgres:5432/postgres",
     "GITHUB_ID": "@bxjs-github-id",
-    "GITHUB_SECRET": "@bxjs-github-secret"
+    "GITHUB_SECRET": "@bxjs-github-secret",
+    "SECRET": "@bxjs-jwt-secret"
   }
 }

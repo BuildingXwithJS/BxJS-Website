@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { useQuery } from 'urql';
 import Giveaway from '../components/giveaway/index.js';
 import Prize from '../components/giveaway/prize.js';
-import { graphqlClient } from '../components/graphql/client.js';
 import {
   OPEN_GIVEAWAYS,
   OPEN_USER_GIVEAWAYS,
@@ -11,8 +10,12 @@ import {
 import { useUser } from '../components/hooks/user.js';
 import Layout from '../components/layout/index.js';
 
-export default function GiveawaysPage({ publicGiveaways }) {
+export default function GiveawaysPage() {
   const { user } = useUser();
+  const [publicResult] = useQuery({
+    query: OPEN_GIVEAWAYS,
+    pause: user,
+  });
   const [result, reexecuteQuery] = useQuery({
     query: OPEN_USER_GIVEAWAYS,
     pause: !user,
@@ -22,6 +25,11 @@ export default function GiveawaysPage({ publicGiveaways }) {
     pause: !user,
   });
 
+  const publicGiveaways = useMemo(
+    () => publicResult.data?.giveaways_giveaway ?? [],
+    [publicResult]
+  );
+
   const userGiveaways = useMemo(() => result?.data?.giveaways_giveaway, [
     result,
   ]);
@@ -30,19 +38,21 @@ export default function GiveawaysPage({ publicGiveaways }) {
     prizesResult,
   ]);
 
+  const loading = publicResult.fetching || result.fetching;
+
   return (
     <Layout>
       <h1 className="text-3xl	py-4">BxJS Giveaways</h1>
 
       <h2 className="text-2xl py-4">Open giveaways</h2>
 
-      {result.fetching && <div>Loading..</div>}
+      {loading && <div>Loading..</div>}
 
       {!userGiveaways?.length && !publicGiveaways?.length && (
         <div>No open giveaways!</div>
       )}
 
-      {userGiveaways &&
+      {userGiveaways?.length &&
         userGiveaways.map((giveaway) => (
           <Giveaway
             key={giveaway.id}
@@ -52,7 +62,7 @@ export default function GiveawaysPage({ publicGiveaways }) {
           />
         ))}
 
-      {!userGiveaways &&
+      {!userGiveaways?.length &&
         publicGiveaways.map((giveaway) => (
           <Giveaway key={giveaway.id} giveaway={giveaway} />
         ))}
@@ -64,21 +74,4 @@ export default function GiveawaysPage({ publicGiveaways }) {
       ))}
     </Layout>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { data, error } = await graphqlClient.query(OPEN_GIVEAWAYS).toPromise();
-
-  if (error) {
-    console.error(error);
-  }
-
-  // get giveaways data
-  const publicGiveaways = data?.giveaways_giveaway ?? [];
-
-  return {
-    props: {
-      publicGiveaways,
-    }, // will be passed to the page component as props
-  };
 }

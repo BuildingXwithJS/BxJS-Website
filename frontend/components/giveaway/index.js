@@ -35,6 +35,15 @@ export default function Giveaway({ giveaway, user, reexecute }) {
                 Enter giveaway
               </button>
             )}
+            {!user && (
+              <button
+                type="button"
+                className="w-full px-16 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform border-black rounded-md bg-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-900"
+                disabled
+              >
+                Sign in to enter giveaway
+              </button>
+            )}
             {user && giveaway.participants?.length > 0 && (
               <div className="w-full px-16 py-2 my-2 text-base font-medium text-gray-600 transition duration-500 ease-in-out transform rounded-md border-gray-50 bg-gray-50 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-100">
                 You are in!
