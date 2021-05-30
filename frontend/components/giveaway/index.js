@@ -12,23 +12,37 @@ export default function Giveaway({ giveaway, user, reexecute }) {
   };
 
   return (
-    <div className="flex flex-col border border-gray-300 bg-gray-300 rounded-lg p-4">
-      <h2 className="text-xl font-bold">{giveaway.name}</h2>
-      <div className="prose">
-        <ReactMarkdown>{giveaway.description}</ReactMarkdown>
+    <div className="container items-center p-4">
+      <div className="flex flex-wrap">
+        <div className="w-full m-4 bg-white border rounded-lg shadow-xl">
+          <div className="p-6">
+            <h2 className="mb-4 text-xs font-semibold tracking-widest text-black uppercase title-font">
+              Ends at: {new Date(giveaway.ends_at).toLocaleDateString()}
+            </h2>
+            <h4 className="mb-8 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font ">
+              {giveaway.name}
+            </h4>
+            <div className="prose mb-3 text-base leading-relaxed">
+              <ReactMarkdown>{giveaway.description}</ReactMarkdown>
+            </div>
+
+            {user && giveaway.participants?.length === 0 && (
+              <button
+                type="button"
+                className="w-full px-16 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform border-black rounded-md bg-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-900"
+                onClick={submit}
+              >
+                Enter giveaway
+              </button>
+            )}
+            {user && giveaway.participants?.length > 0 && (
+              <div className="w-full px-16 py-2 my-2 text-base font-medium text-gray-600 transition duration-500 ease-in-out transform rounded-md border-gray-50 bg-gray-50 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-100">
+                You are in!
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      {user && giveaway.participants?.length === 0 && (
-        <button
-          type="button"
-          className="inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          onClick={submit}
-        >
-          Enter giveaway
-        </button>
-      )}
-      {user && giveaway.participants?.length > 0 && (
-        <div className="font-bold text-xl text-black p-2">You are in!</div>
-      )}
     </div>
   );
 }

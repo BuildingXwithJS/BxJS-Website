@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import ReactMarkdown from 'react-markdown';
 import { useQuery } from 'urql';
 import Giveaway from '../components/giveaway/index.js';
+import Prize from '../components/giveaway/prize.js';
 import { graphqlClient } from '../components/graphql/client.js';
 import {
   OPEN_GIVEAWAYS,
@@ -60,12 +60,7 @@ export default function GiveawaysPage({ publicGiveaways }) {
       <h2 className="text-2xl py-4">Your prizes</h2>
 
       {userPrizes?.map((prize) => (
-        <div className="flex flex-col">
-          <h3 className="text-xl">{prize.name}</h3>
-          <div className="prose">
-            <ReactMarkdown>{prize.description}</ReactMarkdown>
-          </div>
-        </div>
+        <Prize key={prize.id} prize={prize} />
       ))}
     </Layout>
   );
