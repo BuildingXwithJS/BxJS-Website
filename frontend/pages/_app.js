@@ -1,18 +1,17 @@
 import { getSession, Provider } from 'next-auth/client';
-import withDarkMode from 'next-dark-mode';
 import App from 'next/app';
 import Head from 'next/head';
+import { parseCookies } from 'nookies';
 import { useMemo } from 'react';
 import { Provider as UrqlProvider } from 'urql';
 import { createGraphqlClientWithToken } from '../components/graphql/client.js';
 import '../components/styles/globals.css';
+import { ThemeProvider } from '../components/theme/index.js';
 
-function MyApp({ Component, pageProps, token, darkMode }) {
+function MyApp({ Component, pageProps, token, isDark }) {
   const graphqlClient = useMemo(() => createGraphqlClientWithToken(token), [
     token,
   ]);
-
-  const isDark = darkMode.darkModeActive;
 
   return (
     <>
@@ -25,11 +24,13 @@ function MyApp({ Component, pageProps, token, darkMode }) {
           />
         </Head>
       )}
-      <Provider session={pageProps.session}>
-        <UrqlProvider value={graphqlClient}>
-          <Component {...pageProps} />
-        </UrqlProvider>
-      </Provider>
+      <ThemeProvider defaultValue={isDark}>
+        <Provider session={pageProps.session}>
+          <UrqlProvider value={graphqlClient}>
+            <Component {...pageProps} />
+          </UrqlProvider>
+        </Provider>
+      </ThemeProvider>
     </>
   );
 }
@@ -40,7 +41,11 @@ MyApp.getInitialProps = async (appContext) => {
 
   const session = await getSession(appContext);
 
-  return { ...appProps, token: session?.token };
+  // dark mode pre-render
+  const cookies = parseCookies(appContext.ctx);
+  const darkMode = cookies.theme ? cookies.theme === 'dark' : null;
+
+  return { ...appProps, token: session?.token, isDark: darkMode };
 };
 
-export default withDarkMode(MyApp);
+export default MyApp;
