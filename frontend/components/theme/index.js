@@ -1,40 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
-
-const isThemeDark = () =>
-  typeof window !== 'undefined' &&
-  (window.localStorage.theme === 'dark' ||
-    (!('theme' in window.localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches));
+import { useDarkMode } from 'next-dark-mode';
+import { useCallback } from 'react';
 
 export const useTheme = () => {
-  const [isDark, setIsDark] = useState(false);
+  const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
 
   const toggleTheme = useCallback(() => {
-    if (document.documentElement.classList.contains('dark')) {
+    if (darkModeActive) {
       document.documentElement.classList.remove('dark');
-      window.localStorage.theme = 'light';
-      setIsDark(false);
+      switchToLightMode();
     } else {
       document.documentElement.classList.add('dark');
-      window.localStorage.theme = 'dark';
-      setIsDark(true);
+      switchToDarkMode();
     }
-  }, []);
+  }, [darkModeActive, switchToDarkMode, switchToLightMode]);
 
-  useEffect(() => {
-    // if not running in the browser - exit
-    if (typeof window !== 'object') {
-      return;
-    }
-
-    // On page load - change to user preferred theme
-    if (isThemeDark()) {
-      document.documentElement.classList.add('dark');
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  return { toggleTheme, isDark };
+  return { toggleTheme, isDark: darkModeActive };
 };
