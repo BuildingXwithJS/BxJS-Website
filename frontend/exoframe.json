@@ -7,6 +7,7 @@
     "DATABASE_URL": "postgres://postgres:postgrespassword@bxjspostgres:5432/postgres",
     "GITHUB_ID": "@bxjs-github-id",
     "GITHUB_SECRET": "@bxjs-github-secret",
-    "SECRET": "@bxjs-jwt-secret"
+    "SECRET": "@bxjs-jwt-secret",
+    "HASURA_GRAPHQL_ADMIN_SECRET": "@bxjs-hasura-token"
   }
 }
