@@ -1,6 +1,6 @@
 {
-  "name": "bxjs-hasura",
-  "domain": "graphql.bxjs.dev",
+  "name": "codezen-hasura",
+  "domain": "Host(`graphql.bxjs.dev`, `graphql.codezen.dev`, `graphql.databorg.ai`)",
   "port": 8080,
   "env": {
     "HASURA_GRAPHQL_DATABASE_URL": "postgres://postgres:postgrespassword@bxjspostgres:5432/postgres",
