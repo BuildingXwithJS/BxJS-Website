@@ -1,4 +1,4 @@
-import { signIn } from 'next-auth/client';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useUser } from '../hooks/user.js';

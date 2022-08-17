@@ -1,4 +1,4 @@
-import { getSession, Provider } from 'next-auth/client';
+import { getSession, SessionProvider } from 'next-auth/react';
 import App from 'next/app';
 import Head from 'next/head';
 import { parseCookies } from 'nookies';
@@ -25,11 +25,11 @@ function MyApp({ Component, pageProps, token, isDark }) {
         </Head>
       )}
       <ThemeProvider defaultValue={isDark}>
-        <Provider session={pageProps.session}>
+        <SessionProvider session={pageProps.session}>
           <UrqlProvider value={graphqlClient}>
             <Component {...pageProps} />
           </UrqlProvider>
-        </Provider>
+        </SessionProvider>
       </ThemeProvider>
     </>
   );
