@@ -1,41 +1,41 @@
 table:
-  name: giveaway
   schema: giveaways
+  name: giveaway
 array_relationships:
-- name: participants
-  using:
-    foreign_key_constraint_on:
-      column: giveaway
-      table:
-        name: participants
-        schema: giveaways
-- name: prizes
-  using:
-    foreign_key_constraint_on:
-      column: giveaway
-      table:
-        name: prize
-        schema: giveaways
+  - name: participants
+    using:
+      foreign_key_constraint_on:
+        column: giveaway
+        table:
+          schema: giveaways
+          name: participants
+  - name: prizes
+    using:
+      foreign_key_constraint_on:
+        column: giveaway
+        table:
+          schema: giveaways
+          name: prize
 select_permissions:
-- permission:
-    columns:
-    - id
-    - created_at
-    - updated_at
-    - name
-    - description
-    - ends_at
-    - ended
-    filter: {}
-  role: anonymous
-- permission:
-    columns:
-    - id
-    - created_at
-    - updated_at
-    - name
-    - description
-    - ends_at
-    - ended
-    filter: {}
-  role: user
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - name
+        - description
+        - ends_at
+        - ended
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - name
+        - description
+        - ends_at
+        - ended
+      filter: {}

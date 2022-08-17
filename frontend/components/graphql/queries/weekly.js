@@ -32,3 +32,11 @@ export const WEEKLY_EPISODE_BY_NAME = gql`
     }
   }
 `;
+
+export const WEEKLY_LINK_CATEGORIES = gql`
+  query GetWeeklyLinkCategories {
+    bxjsweekly_links(distinct_on: category) {
+      category
+    }
+  }
+`;

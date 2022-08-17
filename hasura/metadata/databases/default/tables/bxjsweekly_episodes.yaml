@@ -1,30 +1,53 @@
 table:
-  name: episodes
   schema: bxjsweekly
+  name: episodes
 array_relationships:
-- name: links
-  using:
-    foreign_key_constraint_on:
-      column: episode
-      table:
-        name: links
-        schema: bxjsweekly
+  - name: links
+    using:
+      foreign_key_constraint_on:
+        column: episode
+        table:
+          schema: bxjsweekly
+          name: links
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+        - date
+        - created_at
+        - updated_at
+      backend_only: false
 select_permissions:
-- permission:
-    columns:
-    - id
-    - name
-    - date
-    - created_at
-    - updated_at
-    filter: {}
-  role: anonymous
-- permission:
-    columns:
-    - id
-    - name
-    - date
-    - created_at
-    - updated_at
-    filter: {}
-  role: user
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - date
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - id
+        - name
+        - date
+        - created_at
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - date
+        - updated_at
+      filter: {}
+      check: {}

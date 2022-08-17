@@ -1,32 +1,59 @@
 table:
-  name: links
   schema: bxjsweekly
+  name: links
 object_relationships:
-- name: episodeData
-  using:
-    foreign_key_constraint_on: episode
+  - name: episodeData
+    using:
+      foreign_key_constraint_on: episode
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - category
+        - title
+        - url
+        - created_at
+        - updated_at
+        - episode
+      backend_only: false
 select_permissions:
-- permission:
-    columns:
-    - episode
-    - id
-    - category
-    - title
-    - url
-    - created_at
-    - updated_at
-    filter: {}
-    limit: 100
-  role: anonymous
-- permission:
-    columns:
-    - id
-    - category
-    - title
-    - url
-    - created_at
-    - updated_at
-    - episode
-    filter: {}
-    limit: 100
-  role: user
+  - role: anonymous
+    permission:
+      columns:
+        - episode
+        - id
+        - category
+        - title
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+      limit: 100
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - id
+        - category
+        - title
+        - url
+        - created_at
+        - updated_at
+        - episode
+      filter: {}
+      limit: 100
+update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - episode
+        - id
+        - category
+        - title
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+      check: {}

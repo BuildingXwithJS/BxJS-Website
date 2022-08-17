@@ -1,17 +1,17 @@
 table:
-  name: prize
   schema: giveaways
+  name: prize
 select_permissions:
-- permission:
-    columns:
-    - id
-    - created_at
-    - updated_at
-    - name
-    - description
-    - giveaway
-    - owner
-    filter:
-      owner:
-        _eq: X-Hasura-User-Id
-  role: user
+  - role: user
+    permission:
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - name
+        - description
+        - giveaway
+        - owner
+      filter:
+        owner:
+          _eq: X-Hasura-User-Id
